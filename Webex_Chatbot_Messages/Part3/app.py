@@ -10,8 +10,8 @@ app = Flask(__name__)
 
 url = "https://api.ciscospark.com/v1/messages"
 
-room_id = "Y2lzY29zcGFyazovL3VzL1JPT00vMzA3ZjMwYWQtYjUxMi0zODI4LWJjYWMtYTBlMWE3ZTk5OThh"
-bearer = "NTgyOThlMmEtOGY5Yy00NjkzLTgxZTAtMmU3MDdmOTJmYWZhNDUyMjU2ZDItNTNm_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f"
+room_id = "Y2lzY29zcGFyazov*******JjYWMtYTBlMWE3ZTk5OThh"
+bearer = "NTgyOThlMmEtOGY*******417f-9974-ad72cae0e10f"
 
        
 @app.route('/', methods = ['GET'])

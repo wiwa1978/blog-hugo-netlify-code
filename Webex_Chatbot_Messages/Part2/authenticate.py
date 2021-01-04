@@ -6,10 +6,10 @@ def get_token(dnac):
 
    if dnac=="sandboxdnac2.cisco.com":
       username = "devnetuser"
-      password = "Cisco123!"
+      password = "---"
    else:
       username = "admin"
-      password = "C!sc0123"
+      password = "---"
 
    headers = {
       "Content-Type": "application/json",
