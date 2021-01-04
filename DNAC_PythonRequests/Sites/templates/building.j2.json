@@ -1,0 +1,12 @@
+{
+   "type": "building",
+   "site": {
+      "building": {
+            "name": "{{building_name}}",
+            "address": "123 Main Street",
+            "parentName": "Global/{{site_name}}",
+            "latitude": "51.0458",
+            "longitude": "5.6413"
+      }
+   }
+}
