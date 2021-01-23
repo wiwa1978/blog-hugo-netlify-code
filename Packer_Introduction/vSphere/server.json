@@ -1,9 +1,21 @@
 {
     "builders": [
       {
+        "type": "vsphere-iso",
+        "username": "{{user `vcenter-username`}}",
+        "vcenter_server": "{{user `vcenter-server`}}",
+        "insecure_connection": "true",
+        "vm_name": "{{user `vm-name`}}",
         "CPUs": "{{user `vm-cpu-num`}}",
         "RAM": "{{user `vm-mem-size`}}",
         "RAM_reserve_all": true,
+        "cluster": "{{user `cluster`}}",
+        "convert_to_template": "true",
+        "datacenter": "{{user `datacenter`}}",
+        "datastore": "{{user `datastore`}}",
+        "folder": "{{user `folder`}}",
+        "guest_os_type": "ubuntu64Guest",
+        "host": "{{user `host`}}",
         "boot_command": [
           "<enter><wait><f6><wait><esc><wait>",
           "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
@@ -23,18 +35,10 @@
           "<enter>"
         ],
         "boot_order": "disk,cdrom",
-        "cluster": "{{user `cluster`}}",
-        "convert_to_template": "true",
-        "datacenter": "{{user `datacenter`}}",
-        "datastore": "{{user `datastore`}}",
         "disk_controller_type": "pvscsi",
         "floppy_files": [
           "./preseed.cfg"
         ],
-        "folder": "{{user `folder`}}",
-        "guest_os_type": "ubuntu64Guest",
-        "host": "{{user `host`}}",
-        "insecure_connection": "true",
         "iso_checksum": "{{user `iso-checksum-type`}}:{{user `iso-checksum`}}",
         "iso_urls": "{{user `iso-url`}}",
         "network_adapters": [
@@ -52,10 +56,6 @@
             "disk_thin_provisioned": true
           }
         ],
-        "type": "vsphere-iso",
-        "username": "{{user `vcenter-username`}}",
-        "vcenter_server": "{{user `vcenter-server`}}",
-        "vm_name": "{{user `vm-name`}}"
       }
     ],
     "provisioners": [

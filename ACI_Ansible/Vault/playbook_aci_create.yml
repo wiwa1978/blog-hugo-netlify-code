@@ -1,0 +1,69 @@
+- name: Limited ACI configuration
+  hosts: apic
+  connection: local
+  gather_facts: False
+  vars_files:
+    - vars/variables_aci.yml
+  vars:
+    aci_login: &aci_login
+      hostname: '{{ inventory_hostname }}'
+      username: '{{ username }}'
+      password: '{{ password }}' 
+      validate_certs: False     
+  
+  tasks:
+    - name: Task 01 - Create Tenant
+      aci_tenant:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        descr: "Tenant Created Using Ansible"
+      tags: tenant, vrf, bd, filter, contract, app, epg
+
+    - name: Task 02 - Create VRF
+      aci_vrf:
+        <<: *aci_login
+        tenant: "{{ tenant }}"
+        vrf: "{{ vrf }}"
+        descr: "VRF Created Using Ansible"
+      tags: vrf, bd
+
+    - name: Task 03 - Create BD
+      aci_bd:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        bd: "{{ item.bd | default('prod_bd') }}"
+        vrf: "{{ vrf }}"
+      with_items: "{{ bridge_domains }}"
+      tags: bd
+    
+    - name: Task 04 - Create subnet in BD
+      aci_bd_subnet:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        bd: "{{ item.bd }}"
+        gateway: "{{ item.gateway }}"
+        mask: "{{ item.mask }}"
+        scope: ["public", "shared"]
+      with_items: "{{ bridge_domains }}"
+
+    - name: Task 05 - Add a new Application Profile
+      aci_ap:
+        <<: *aci_login
+        tenant: '{{ tenant }}' 
+        ap: '{{ ap }}'
+        state: present
+
+    - name: Task 06 - Create EPG's and add to the Application Profile
+      aci_epg:
+        <<: *aci_login
+        tenant: '{{ tenant }}' 
+        ap: '{{ ap }}'
+        epg: '{{ item.epg }}'
+        bd: '{{ item.bd }}'  
+        preferred_group: yes
+        state: present
+      with_items: "{{ epgs }}"
+    
