@@ -17,7 +17,7 @@ class ProductionConfig(Config):
     FLASK_ENV = 'production'
     DEBUG = False
     TESTING = False
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL", "mysql+pymysql://root:12345678a-@localhost:3306/flask_todos")
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL", "mysql+pymysql://root:12345678a-@localhost:3306/flask_todo")
 
 app_config = {
     'development': DevelopmentConfig,
