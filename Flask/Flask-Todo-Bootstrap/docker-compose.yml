@@ -19,7 +19,7 @@ services:
       - db_data:/var/lib/mysql/data/
     environment:
       MYSQL_ROOT_PASSWORD: 12345678a-
-      MYSQL_DATABASE: flask_todos
+      MYSQL_DATABASE: flask_todo
       MYSQL_PASSWORD: 12345678a-
     ports:
       - "33060:3306"
