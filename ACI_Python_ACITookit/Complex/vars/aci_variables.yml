@@ -1,0 +1,33 @@
+---
+tenant: "Tenant_EC_Demo_Python_Toolkit"
+vrf: "VRF_EC"
+bridge_domains:
+  - bd: "BD_EC"
+    gateway: "10.16.110.1"
+    mask: "24"
+    scope: "shared"
+    l3_out: "labinfra-l3out-ro"
+ap: "AP_EC"
+epgs:
+  - epg: "EPG1"
+    bd: "BD_EC"
+  - epg: "EPG2"
+    bd: "BD_EC"
+epg_contracts:
+  - epg: "EPG1"
+    contract: "Contract_EC"
+    contract_type: "provider"
+  - epg: "EPG2"
+    contract: "Contract_EC"
+    contract_type: "consumer"
+contracts:
+  - contract: "Contract_EC"
+    subject: "Subject_EC"
+    filter: "allow_http"
+filters:
+  - filter: "allow_http"
+    entry: "http"
+    protocol: "tcp"
+    port: "80"
+
+

@@ -1,0 +1,18 @@
+---
+- name: Validate command
+  hosts: iosxe
+  gather_facts: no
+
+  tasks:
+    - name: NaPalm Validation
+      napalm_validate:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ ansible_user }}"
+        password: "{{ ansible_ssh_pass }}"
+        dev_os: "ios"
+        optional_args:
+          port: 8181
+        validation_file: "{{ validate_file }}"
+      
+
+

@@ -1,0 +1,23 @@
+- name: Cleanup - Removing Tenants
+  hosts: apic
+  connection: local
+  gather_facts: False
+  vars:
+    tenants:
+      - "Tenant_Ansible"
+    aci_login: &aci_login
+      hostname: '{{ inventory_hostname }}'
+      username: '{{ username }}'
+      password: '{{ password }}' 
+      validate_certs: False  
+
+  tasks:
+    - name: Delete Tenants
+      aci_tenant:
+        host: "{{ ansible_host }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        state: "absent"
+        validate_certs: False
+        tenant: "{{ item }}"
+      with_items: "{{ tenants }}"

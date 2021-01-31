@@ -1,0 +1,31 @@
+{
+	"vzFilter":
+		{
+			"attributes":
+				{
+					"dn":"uni/tn-{{tenant_name}}/flt-{{filter_name}}",
+					"name":"{{filter_name}}",
+					"rn":"flt-{{filter_name}}",
+					"status":"created,modified"},
+			"children":[
+				{
+					"vzEntry":
+						{
+							"attributes":
+								{
+									"dn":"uni/tn-{{tenant_name}}/flt-{{filter_name}}/e-{{filter_name}}",
+									"name":"HTTP",
+									"etherT":"ipv4",
+									"prot":"tcp",
+									"dFromPort":"http",
+									"dToPort":"http",
+									"tcpRules":"",
+									"rn":"e-{{filter_name}}",
+									"status":"created,modified"
+								},
+							"children":[]
+						}
+				}
+			]
+		}
+}

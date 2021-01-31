@@ -1,0 +1,10 @@
+---
+- name: Restconf - Config
+  hosts: iosxe
+
+  tasks:
+  - name:  Delete interfaces with IETF YANG model
+    restconf_config:
+      method: delete
+      path: /data/ietf-interfaces:interfaces/interface={{ item['name'] }}
+    with_items: "{{ loopback_interfaces['interface'] }}"

@@ -1,0 +1,9 @@
+{
+      "type": "area",
+      "site": {
+         "area": {
+               "name": "{{site_name}}",
+               "parentName": "Global"
+         }
+      }
+   }

@@ -1,0 +1,11 @@
+#hosts
+[masters]
+master ansible_host=18.203.68.253 ansible_user=ubuntu
+
+[workers]
+worker1 ansible_host=3.249.4.142 ansible_user=ubuntu
+worker2 ansible_host=3.249.141.242 ansible_user=ubuntu
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_private_key_file=~/.ssh/AWS-Cisco.pem

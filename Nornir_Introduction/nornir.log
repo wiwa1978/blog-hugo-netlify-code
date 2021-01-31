@@ -1,0 +1,547 @@
+2020-09-28 14:17:48,335 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_config' with args {'config_commands': ['interface GigabitEthernet3', 'description Description set with Nornir']} on 2 hosts
+2020-09-28 14:17:53,470 - nornir.core.task -    ERROR -      start() - Host 'DEV02': task 'netmiko_send_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 918, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/paramiko/util.py", line 283, in retry_on_signal
+    return function()
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 24, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir/core/inventory.py", line 448, in get_connection
+    extras=conn.extras,
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir/core/inventory.py", line 499, in open_connection
+    configuration=configuration,
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 302, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/cisco/cisco_ios.py", line 17, in __init__
+    return super().__init__(*args, **kwargs)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 344, in __init__
+    self._open()
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 349, in _open
+    self.establish_connection()
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 940, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.ssh_exception.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios ios-xe-mgmt-latest.cisco.com:8181
+
+
+
+2020-09-28 14:17:53,471 - nornir.core.task -    ERROR -      start() - Host 'DEV01': task 'netmiko_send_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 918, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/paramiko/util.py", line 283, in retry_on_signal
+    return function()
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 24, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir/core/inventory.py", line 448, in get_connection
+    extras=conn.extras,
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir/core/inventory.py", line 499, in open_connection
+    configuration=configuration,
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 302, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/cisco/cisco_ios.py", line 17, in __init__
+    return super().__init__(*args, **kwargs)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 344, in __init__
+    self._open()
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 349, in _open
+    self.establish_connection()
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 940, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.ssh_exception.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios ios-xe-mgmt.cisco.com:8181
+
+
+
+2020-09-28 14:42:32,623 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show ip int br'} on 2 hosts
+2020-09-28 14:42:37,636 - nornir.core.task -    ERROR -      start() - Host 'DEV01': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 918, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/paramiko/util.py", line 283, in retry_on_signal
+    return function()
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir/core/inventory.py", line 448, in get_connection
+    extras=conn.extras,
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir/core/inventory.py", line 499, in open_connection
+    configuration=configuration,
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 302, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/cisco/cisco_ios.py", line 17, in __init__
+    return super().__init__(*args, **kwargs)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 344, in __init__
+    self._open()
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 349, in _open
+    self.establish_connection()
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 940, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.ssh_exception.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios ios-xe-mgmt.cisco.com:8181
+
+
+
+2020-09-28 14:42:37,636 - nornir.core.task -    ERROR -      start() - Host 'DEV02': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 918, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/paramiko/util.py", line 283, in retry_on_signal
+    return function()
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir/core/inventory.py", line 448, in get_connection
+    extras=conn.extras,
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir/core/inventory.py", line 499, in open_connection
+    configuration=configuration,
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 302, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/cisco/cisco_ios.py", line 17, in __init__
+    return super().__init__(*args, **kwargs)
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 344, in __init__
+    self._open()
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 349, in _open
+    self.establish_connection()
+  File "/Users/wauterw/SynologyDrive/Programming/blog-hugo-netlify-code/Nornir_Introduction/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 940, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.ssh_exception.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios ios-xe-mgmt-latest.cisco.com:8181
+
+
+
+2020-09-29 15:15:36,055 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show ip int br'} on 2 hosts
+2020-09-29 15:15:41,291 - nornir.core.task -    ERROR -      start() - Host 'DEV01': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 918, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 412, in connect
+    server_key = t.get_remote_server_key()
+  File "/usr/local/lib/python3.7/site-packages/paramiko/transport.py", line 834, in get_remote_server_key
+    raise SSHException("No existing session")
+paramiko.ssh_exception.SSHException: No existing session
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 448, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 499, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 302, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/cisco/cisco_ios.py", line 17, in __init__
+    return super().__init__(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 344, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 349, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 948, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.ssh_exception.NetmikoTimeoutException: Paramiko: 'No existing session' error: try increasing 'conn_timeout' to 10 seconds or larger.
+
+2020-09-29 15:15:41,292 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show version'} on 2 hosts
+2020-09-29 15:15:41,595 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show ip int br'} on 1 hosts
+2020-09-29 15:15:41,933 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'commands': ['show version', 'show interface brief']} on 2 hosts
+2020-09-29 15:15:41,934 - nornir.core.task -    ERROR -      start() - Host 'DEV02': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+TypeError: netmiko_send_command() missing 1 required positional argument: 'command_string'
+
+2020-09-29 15:15:41,934 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_config' with args {'config_commands': ['interface GigabitEthernet3', 'description Description set with Nornir Netmiko']} on 2 hosts
+2020-09-29 15:18:12,704 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show ip int br'} on 2 hosts
+2020-09-29 15:22:34,179 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show ip int br'} on 1 hosts
+2020-09-29 15:23:25,275 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'commands': ['show version', 'show interface brief']} on 2 hosts
+2020-09-29 15:23:25,277 - nornir.core.task -    ERROR -      start() - Host 'DEV02': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+TypeError: netmiko_send_command() missing 1 required positional argument: 'command_string'
+
+2020-09-29 15:23:25,277 - nornir.core.task -    ERROR -      start() - Host 'DEV01': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+TypeError: netmiko_send_command() missing 1 required positional argument: 'command_string'
+
+2020-09-29 15:26:44,867 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': ['show version', 'show interface brief']} on 2 hosts
+2020-09-29 15:26:48,672 - nornir.core.task -    ERROR -      start() - Host 'DEV02': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 32, in netmiko_send_command
+    result = net_connect.send_command(command_string, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/utilities.py", line 363, in wrapper_decorator
+    return func(self, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 1436, in send_command
+    command_string = self.normalize_cmd(command_string)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 1590, in normalize_cmd
+    command = command.rstrip()
+AttributeError: 'list' object has no attribute 'rstrip'
+
+2020-09-29 15:27:02,331 - nornir.core.task -    ERROR -      start() - Host 'DEV01': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 32, in netmiko_send_command
+    result = net_connect.send_command(command_string, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/utilities.py", line 363, in wrapper_decorator
+    return func(self, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 1436, in send_command
+    command_string = self.normalize_cmd(command_string)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 1590, in normalize_cmd
+    command = command.rstrip()
+AttributeError: 'list' object has no attribute 'rstrip'
+
+2020-09-29 15:30:28,112 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_config' with args {'config_commands': ['interface GigabitEthernet3', 'description Description set with Nornir Netmiko']} on 2 hosts
+2020-09-29 15:54:58,646 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['get_interfaces']} on 2 hosts
+2020-09-29 15:55:42,758 - nornir.core.task -    ERROR -      start() - Host 'DEV01': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/napalm/ios/ios.py", line 205, in _send_command
+    output = self.device.send_command(command)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/utilities.py", line 363, in wrapper_decorator
+    return func(self, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 1488, in send_command
+    search_pattern
+OSError: Search pattern never detected in send_command_expect: csr1000v\#
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 44, in napalm_get
+    result[g] = method(**options)
+  File "/usr/local/lib/python3.7/site-packages/napalm/ios/ios.py", line 1076, in get_interfaces
+    output = self._send_command(command)
+  File "/usr/local/lib/python3.7/site-packages/napalm/ios/ios.py", line 208, in _send_command
+    raise ConnectionClosedException(str(e))
+napalm.base.exceptions.ConnectionClosedException: Search pattern never detected in send_command_expect: csr1000v\#
+
+2020-09-29 15:55:42,772 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['interfaces']} on 2 hosts
+2020-09-29 15:55:43,093 -  nornir.core -     INFO -        run() - Running task 'napalm_cli' with args {'commands': ['show version', 'show interface brief']} on 2 hosts
+2020-09-29 16:03:25,163 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['get_interfaces']} on 2 hosts
+2020-09-29 16:03:30,304 - nornir.core.task -    ERROR -      start() - Host 'DEV01': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 918, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 412, in connect
+    server_key = t.get_remote_server_key()
+  File "/usr/local/lib/python3.7/site-packages/paramiko/transport.py", line 834, in get_remote_server_key
+    raise SSHException("No existing session")
+paramiko.ssh_exception.SSHException: No existing session
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/base.py", line 92, in _netmiko_open
+    **netmiko_optional_args
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 302, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/cisco/cisco_ios.py", line 17, in __init__
+    return super().__init__(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 344, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 349, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 948, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.ssh_exception.NetmikoTimeoutException: Paramiko: 'No existing session' error: try increasing 'conn_timeout' to 10 seconds or larger.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 448, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 499, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/usr/local/lib/python3.7/site-packages/napalm/ios/ios.py", line 170, in open
+    device_type, netmiko_optional_args=self.netmiko_optional_args
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/base.py", line 95, in _netmiko_open
+    raise ConnectionException("Cannot connect to {}".format(self.hostname))
+napalm.base.exceptions.ConnectionException: Cannot connect to ios-xe-mgmt.cisco.com
+
+2020-09-29 16:03:30,318 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['interfaces']} on 2 hosts
+2020-09-29 16:05:17,864 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['interfaces']} on 2 hosts
+2020-09-29 16:09:53,549 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['interfaces']} on 2 hosts
+2020-09-29 16:11:16,754 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['interfaces']} on 2 hosts
+2020-09-29 16:11:22,043 - nornir.core.task -    ERROR -      start() - Host 'DEV02': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 918, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 412, in connect
+    server_key = t.get_remote_server_key()
+  File "/usr/local/lib/python3.7/site-packages/paramiko/transport.py", line 834, in get_remote_server_key
+    raise SSHException("No existing session")
+paramiko.ssh_exception.SSHException: No existing session
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/base.py", line 92, in _netmiko_open
+    **netmiko_optional_args
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 302, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/cisco/cisco_ios.py", line 17, in __init__
+    return super().__init__(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 344, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 349, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 948, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.ssh_exception.NetmikoTimeoutException: Paramiko: 'No existing session' error: try increasing 'conn_timeout' to 10 seconds or larger.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 448, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 499, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/usr/local/lib/python3.7/site-packages/napalm/ios/ios.py", line 170, in open
+    device_type, netmiko_optional_args=self.netmiko_optional_args
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/base.py", line 95, in _netmiko_open
+    raise ConnectionException("Cannot connect to {}".format(self.hostname))
+napalm.base.exceptions.ConnectionException: Cannot connect to ios-xe-mgmt-latest.cisco.com
+
+2020-09-29 16:12:08,073 - nornir.core.task -    ERROR -      start() - Host 'DEV01': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/napalm/ios/ios.py", line 205, in _send_command
+    output = self.device.send_command(command)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/utilities.py", line 363, in wrapper_decorator
+    return func(self, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 1488, in send_command
+    search_pattern
+OSError: Search pattern never detected in send_command_expect: csr1000v\#
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 44, in napalm_get
+    result[g] = method(**options)
+  File "/usr/local/lib/python3.7/site-packages/napalm/ios/ios.py", line 1076, in get_interfaces
+    output = self._send_command(command)
+  File "/usr/local/lib/python3.7/site-packages/napalm/ios/ios.py", line 208, in _send_command
+    raise ConnectionClosedException(str(e))
+napalm.base.exceptions.ConnectionClosedException: Search pattern never detected in send_command_expect: csr1000v\#
+
+2020-09-29 16:12:34,759 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['interfaces']} on 2 hosts
+2020-09-29 16:29:05,300 -  nornir.core -     INFO -        run() - Running task 'napalm_cli' with args {'commands': ['show version', 'show interface brief']} on 2 hosts
+2020-09-29 16:30:04,840 -  nornir.core -     INFO -        run() - Running task 'napalm_cli' with args {'commands': ['show version', 'show interface brief']} on 2 hosts
+2020-09-29 16:37:39,711 -  nornir.core -     INFO -        run() - Running task 'napalm_cli' with args {'commands': ['show version', 'show ip int brief']} on 2 hosts
+2020-09-29 16:38:21,285 -  nornir.core -     INFO -        run() - Running task 'napalm_cli' with args {'commands': ['show version', 'show ip int brief']} on 2 hosts
+2020-09-29 16:38:52,769 -  nornir.core -     INFO -        run() - Running task 'napalm_cli' with args {'commands': ['show version', 'show ip int brief']} on 1 hosts
+2020-09-29 16:47:27,182 -  nornir.core -     INFO -        run() - Running task 'get_prompt' with args {} on 2 hosts
+2020-09-29 16:48:19,546 -  nornir.core -     INFO -        run() - Running task 'get_prompt' with args {} on 2 hosts
+2020-09-29 16:48:43,435 -  nornir.core -     INFO -        run() - Running task 'send_command' with args {'command': 'show ip int brief'} on 2 hosts
+2020-09-29 16:49:07,927 -  nornir.core -     INFO -        run() - Running task 'send_command' with args {'command': 'show ip int brief'} on 2 hosts
+2020-09-29 16:51:28,886 -  nornir.core -     INFO -        run() - Running task 'send_command' with args {'command': 'show ip int brief'} on 2 hosts
+2020-09-29 16:52:21,208 -  nornir.core -     INFO -        run() - Running task 'send_command' with args {'command': 'show version'} on 2 hosts
+2020-09-29 16:53:23,168 -  nornir.core -     INFO -        run() - Running task 'send_command' with args {'command': 'show version'} on 2 hosts
+2020-09-29 16:53:53,558 -  nornir.core -     INFO -        run() - Running task 'send_command' with args {'command': 'show version'} on 2 hosts
+2020-09-29 16:54:12,008 -  nornir.core -     INFO -        run() - Running task 'send_command' with args {'command': 'show ip int brief'} on 2 hosts
+2020-09-29 16:56:54,192 -  nornir.core -     INFO -        run() - Running task 'send_command' with args {'command': 'show ip int brief'} on 2 hosts
+2020-09-29 17:00:40,619 -  nornir.core -     INFO -        run() - Running task 'send_command' with args {'commands': ['show version', 'show ip int brief']} on 2 hosts
+2020-09-29 17:00:40,621 - nornir.core.task -    ERROR -      start() - Host 'DEV01': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+TypeError: send_command() got an unexpected keyword argument 'commands'
+
+2020-09-29 17:00:40,621 - nornir.core.task -    ERROR -      start() - Host 'DEV02': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+TypeError: send_command() got an unexpected keyword argument 'commands'
+
+2020-09-29 17:03:19,225 -  nornir.core -     INFO -        run() - Running task 'send_command' with args {'commands': ['show version', 'show ip int brief']} on 2 hosts
+2020-09-29 17:03:19,225 - nornir.core.task -    ERROR -      start() - Host 'DEV01': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+TypeError: send_command() got an unexpected keyword argument 'commands'
+
+2020-09-29 17:03:19,226 - nornir.core.task -    ERROR -      start() - Host 'DEV02': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+TypeError: send_command() got an unexpected keyword argument 'commands'
+
+2020-09-29 17:03:25,507 -  nornir.core -     INFO -        run() - Running task 'send_command' with args {'command': ['show version', 'show ip int brief']} on 2 hosts
+2020-09-29 17:03:30,052 - nornir.core.task -    ERROR -      start() - Host 'DEV02': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir_scrapli/tasks/send_command.py", line 34, in send_command
+    command=command, strip_prompt=strip_prompt, failed_when_contains=failed_when_contains
+  File "/usr/local/lib/python3.7/site-packages/scrapli/driver/network_driver.py", line 182, in send_command
+    timeout_ops=timeout_ops,
+  File "/usr/local/lib/python3.7/site-packages/scrapli/decorators.py", line 380, in decorate
+    result = wrapped_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/scrapli/driver/generic_driver.py", line 143, in send_command
+    host=self.transport.host, command=command, failed_when_contains=failed_when_contains
+  File "/usr/local/lib/python3.7/site-packages/scrapli/driver/base_generic_driver.py", line 44, in _pre_send_command
+    f"`send_command` expects a single string, got {type(command)}, "
+TypeError: `send_command` expects a single string, got <class 'list'>, to send a list of commands use the `send_commands` method instead.
+
+2020-09-29 17:03:34,442 - nornir.core.task -    ERROR -      start() - Host 'DEV01': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir_scrapli/tasks/send_command.py", line 34, in send_command
+    command=command, strip_prompt=strip_prompt, failed_when_contains=failed_when_contains
+  File "/usr/local/lib/python3.7/site-packages/scrapli/driver/network_driver.py", line 182, in send_command
+    timeout_ops=timeout_ops,
+  File "/usr/local/lib/python3.7/site-packages/scrapli/decorators.py", line 380, in decorate
+    result = wrapped_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/scrapli/driver/generic_driver.py", line 143, in send_command
+    host=self.transport.host, command=command, failed_when_contains=failed_when_contains
+  File "/usr/local/lib/python3.7/site-packages/scrapli/driver/base_generic_driver.py", line 44, in _pre_send_command
+    f"`send_command` expects a single string, got {type(command)}, "
+TypeError: `send_command` expects a single string, got <class 'list'>, to send a list of commands use the `send_commands` method instead.
+
+2020-09-29 17:08:06,864 -  nornir.core -     INFO -        run() - Running task 'send_commands' with args {'commands': ['show version', 'show ip int brief']} on 2 hosts
+2020-09-29 18:49:33,048 -  nornir.core -     INFO -        run() - Running task 'send_configs' with args {'configs': ['interface GigabitEthernet3', 'description Configured by Scrapli through Nornir']} on 2 hosts
+2020-09-29 18:51:02,046 -  nornir.core -     INFO -        run() - Running task 'send_configs' with args {'configs': ['interface GigabitEthernet3', 'description Configured by Scrapli through Nornir']} on 2 hosts
+2020-09-29 18:51:44,547 - nornir.core.task -    ERROR -      start() - Host 'DEV01': task 'send_configs' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/scrapli/decorators.py", line 301, in multiprocessing_timeout
+    result = future.get(timeout=self.timeout_duration)
+  File "/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/multiprocessing/pool.py", line 653, in get
+    raise TimeoutError
+multiprocessing.context.TimeoutError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir_scrapli/tasks/send_configs.py", line 62, in send_configs
+    privilege_level=privilege_level,
+  File "/usr/local/lib/python3.7/site-packages/scrapli/driver/network_driver.py", line 478, in send_configs
+    self.acquire_priv(desired_priv=resolved_privilege_level)
+  File "/usr/local/lib/python3.7/site-packages/scrapli/driver/network_driver.py", line 137, in acquire_priv
+    self._escalate(escalate_priv=target_priv)
+  File "/usr/local/lib/python3.7/site-packages/scrapli/driver/network_driver.py", line 87, in _escalate
+    self.channel.send_input(channel_input=escalate_priv.escalate)
+  File "/usr/local/lib/python3.7/site-packages/scrapli/decorators.py", line 114, in decorate
+    wrapped_func=wrapped_func, args=args, kwargs=kwargs
+  File "/usr/local/lib/python3.7/site-packages/scrapli/decorators.py", line 301, in multiprocessing_timeout
+    result = future.get(timeout=self.timeout_duration)
+  File "/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/multiprocessing/pool.py", line 657, in get
+    raise self._value
+  File "/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/multiprocessing/pool.py", line 121, in worker
+    result = (True, func(*args, **kwds))
+  File "/usr/local/lib/python3.7/site-packages/scrapli/channel/channel.py", line 245, in send_input
+    output = self._read_until_input(channel_input=bytes_channel_input)
+  File "/usr/local/lib/python3.7/site-packages/scrapli/channel/channel.py", line 87, in _read_until_input
+    output += self._read_chunk()
+  File "/usr/local/lib/python3.7/site-packages/scrapli/channel/channel.py", line 49, in _read_chunk
+    new_output = self.transport.read()
+  File "/usr/local/lib/python3.7/site-packages/scrapli/decorators.py", line 328, in requires_open_session_wrapper
+    return wrapped_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/scrapli/decorators.py", line 114, in decorate
+    wrapped_func=wrapped_func, args=args, kwargs=kwargs
+  File "/usr/local/lib/python3.7/site-packages/scrapli/decorators.py", line 303, in multiprocessing_timeout
+    self._handle_timeout()
+  File "/usr/local/lib/python3.7/site-packages/scrapli/decorators.py", line 207, in _handle_timeout
+    raise ScrapliTimeout(self.message)
+scrapli.exceptions.ScrapliTimeout: Timed out reading from transport
+
+2020-09-29 18:52:11,085 -  nornir.core -     INFO -        run() - Running task 'send_configs' with args {'configs': ['interface GigabitEthernet3', 'description Configured by Scrapli through Nornir']} on 2 hosts

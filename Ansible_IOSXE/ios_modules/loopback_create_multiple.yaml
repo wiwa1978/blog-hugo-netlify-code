@@ -1,0 +1,26 @@
+---
+- name: Configure loopback using ios_interface
+  hosts: iosxe
+  gather_facts: no
+  vars_files:
+    - vars/loopbacks.yaml
+
+  tasks:
+    - name: Creating loopback 
+      ios_interface:
+        name: "{{ item.loopbackname }}"
+        enabled: True
+        description: Loopback interface 100 created with Ansible
+      with_items: "{{ loopbacks }}"
+
+    - name: Assign IP to loopback
+      ios_l3_interface:
+        name: "{{ item.loopbackname }}"
+        ipv4: "{{ item.ip }}/{{ item.mask }}"
+      with_items: "{{ loopbacks }}"
+
+    - name: Make interface down
+      ios_interface:
+        name: "{{ item.loopbackname }}"
+        enabled: False
+      with_items: "{{ loopbacks }}"

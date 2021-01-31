@@ -1,0 +1,44 @@
+{
+  "fvTenant": {
+    "attributes": { "name": "{{tenant_name}}" },
+    "children": [
+      {
+        "fvBD": {
+          "attributes": {
+            "name": "{{bd_name}}",
+            "unkMacUcastAct": "proxy",
+            "unkMcastAct": "flood",
+            "arpFlood": "no",
+            "unicastRoute": "yes",
+            "multiDstPktAct": "bd-flood"
+          },
+          "children": [
+            { 
+              "fvRsCtx": { 
+                "attributes": { 
+                  "tnFvCtxName": "{{vrf_name}}" 
+                } 
+              }
+            },
+            {
+              "fvSubnet": {
+                "attributes": {
+                  "dn": "uni/tn-{{tenant_name}}/BD-{{bd_name}}/subnet-[192.168.10.11/24]",
+                  "ctrl": "",
+                  "ip": "192.168.10.11/24",
+                  "scope": "private,shared",
+                  "rn": "subnet-[192.168.10.11/24]",
+                  "status": "created"
+                },
+                "children": []
+              }
+            }
+            
+            
+          ]
+        }
+      }
+    ]
+  }
+}
+

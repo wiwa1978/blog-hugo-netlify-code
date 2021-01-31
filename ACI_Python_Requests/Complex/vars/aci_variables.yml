@@ -1,0 +1,33 @@
+---
+url: "https://10.48.108.214/"
+username: "admin"
+password: "---"
+tenant: "Tenant_Python_Requests"
+vrf: "VRF_Demo"
+bridge_domains:
+  - bd: "BD_Demo"
+    gateway: "10.16.110.1"
+    mask: "24"
+    scope: "shared"
+ap: "AP_Demo"
+epgs:
+  - epg: "EPG1"
+    bd: "BD_Demo"
+  - epg: "EPG2"
+    bd: "BD_Demo"
+epg_contracts:
+  - epg: "EPG1"
+    contract: "Contract_Demo"
+    contract_type: "provider"
+  - epg: "EPG2"
+    contract: "Contract_Demo"
+    contract_type: "consumer"
+contracts:
+  - contract: "Contract_Demo"
+    subjDemot: "SubjDemot_Demo"
+    filter: "allow_http"
+filters:
+  - filter: "HTTP"
+    entry: "http"
+    protocol: "tcp"
+    port: "80"

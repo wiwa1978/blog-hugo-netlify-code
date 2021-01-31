@@ -1,0 +1,17 @@
+---
+- name: Restconf - Config
+  hosts: iosxe
+
+  tasks:
+  - name:  Create interfaces with IETF YANG model
+    restconf_config:
+      method: post
+      format: json
+      path: /data/ietf-interfaces:interfaces
+      content: "{{ lookup('file','./loopback.json') | string }}"
+    register: output
+    ignore_errors: true
+
+  - name: display all
+    debug:
+      var: output

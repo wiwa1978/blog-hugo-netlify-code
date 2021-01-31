@@ -1,0 +1,440 @@
+{
+   "Customers": {
+      "Customer": [
+         {
+            "@CustomerID": "GREAL",
+            "CompanyName": "Great Lakes Food Market",
+            "ContactName": "Howard Snyder",
+            "ContactTitle": "Marketing Manager",
+            "Phone": "(503) 555-7555",
+            "FullAddress": {
+               "Address": "2732 Baker Blvd.",
+               "City": "Eugene",
+               "Region": "OR",
+               "PostalCode": "97403",
+               "Country": "USA"
+            }
+         },
+         {
+            "@CustomerID": "HUNGC",
+            "CompanyName": "Hungry Coyote Import Store",
+            "ContactName": "Yoshi Latimer",
+            "ContactTitle": "Sales Representative",
+            "Phone": "(503) 555-6874",
+            "Fax": "(503) 555-2376",
+            "FullAddress": {
+               "Address": "City Center Plaza 516 Main St.",
+               "City": "Elgin",
+               "Region": "OR",
+               "PostalCode": "97827",
+               "Country": "USA"
+            }
+         },
+         {
+            "@CustomerID": "LAZYK",
+            "CompanyName": "Lazy K Kountry Store",
+            "ContactName": "John Steel",
+            "ContactTitle": "Marketing Manager",
+            "Phone": "(509) 555-7969",
+            "Fax": "(509) 555-6221",
+            "FullAddress": {
+               "Address": "12 Orchestra Terrace",
+               "City": "Walla Walla",
+               "Region": "WA",
+               "PostalCode": "99362",
+               "Country": "USA"
+            }
+         },
+         {
+            "@CustomerID": "LETSS",
+            "CompanyName": "Let's Stop N Shop",
+            "ContactName": "Jaime Yorres",
+            "ContactTitle": "Owner",
+            "Phone": "(415) 555-5938",
+            "FullAddress": {
+               "Address": "87 Polk St. Suite 5",
+               "City": "San Francisco",
+               "Region": "CA",
+               "PostalCode": "94117",
+               "Country": "USA"
+            }
+         }
+      ]
+   },
+   "Orders": {
+      "Order": [
+         {
+            "CustomerID": "GREAL",
+            "EmployeeID": "6",
+            "OrderDate": "1997-05-06T00:00:00",
+            "RequiredDate": "1997-05-20T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1997-05-09T00:00:00",
+               "ShipVia": "2",
+               "Freight": "3.35",
+               "ShipName": "Great Lakes Food Market",
+               "ShipAddress": "2732 Baker Blvd.",
+               "ShipCity": "Eugene",
+               "ShipRegion": "OR",
+               "ShipPostalCode": "97403",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "GREAL",
+            "EmployeeID": "8",
+            "OrderDate": "1997-07-04T00:00:00",
+            "RequiredDate": "1997-08-01T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1997-07-14T00:00:00",
+               "ShipVia": "2",
+               "Freight": "4.42",
+               "ShipName": "Great Lakes Food Market",
+               "ShipAddress": "2732 Baker Blvd.",
+               "ShipCity": "Eugene",
+               "ShipRegion": "OR",
+               "ShipPostalCode": "97403",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "GREAL",
+            "EmployeeID": "1",
+            "OrderDate": "1997-07-31T00:00:00",
+            "RequiredDate": "1997-08-28T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1997-08-05T00:00:00",
+               "ShipVia": "2",
+               "Freight": "116.53",
+               "ShipName": "Great Lakes Food Market",
+               "ShipAddress": "2732 Baker Blvd.",
+               "ShipCity": "Eugene",
+               "ShipRegion": "OR",
+               "ShipPostalCode": "97403",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "GREAL",
+            "EmployeeID": "4",
+            "OrderDate": "1997-07-31T00:00:00",
+            "RequiredDate": "1997-08-28T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1997-08-04T00:00:00",
+               "ShipVia": "2",
+               "Freight": "18.53",
+               "ShipName": "Great Lakes Food Market",
+               "ShipAddress": "2732 Baker Blvd.",
+               "ShipCity": "Eugene",
+               "ShipRegion": "OR",
+               "ShipPostalCode": "97403",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "GREAL",
+            "EmployeeID": "6",
+            "OrderDate": "1997-09-04T00:00:00",
+            "RequiredDate": "1997-10-02T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1997-09-10T00:00:00",
+               "ShipVia": "1",
+               "Freight": "57.15",
+               "ShipName": "Great Lakes Food Market",
+               "ShipAddress": "2732 Baker Blvd.",
+               "ShipCity": "Eugene",
+               "ShipRegion": "OR",
+               "ShipPostalCode": "97403",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "GREAL",
+            "EmployeeID": "3",
+            "OrderDate": "1997-09-25T00:00:00",
+            "RequiredDate": "1997-10-23T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1997-09-30T00:00:00",
+               "ShipVia": "3",
+               "Freight": "76.13",
+               "ShipName": "Great Lakes Food Market",
+               "ShipAddress": "2732 Baker Blvd.",
+               "ShipCity": "Eugene",
+               "ShipRegion": "OR",
+               "ShipPostalCode": "97403",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "GREAL",
+            "EmployeeID": "4",
+            "OrderDate": "1998-01-06T00:00:00",
+            "RequiredDate": "1998-02-03T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1998-02-04T00:00:00",
+               "ShipVia": "2",
+               "Freight": "719.78",
+               "ShipName": "Great Lakes Food Market",
+               "ShipAddress": "2732 Baker Blvd.",
+               "ShipCity": "Eugene",
+               "ShipRegion": "OR",
+               "ShipPostalCode": "97403",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "GREAL",
+            "EmployeeID": "3",
+            "OrderDate": "1998-03-09T00:00:00",
+            "RequiredDate": "1998-04-06T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1998-03-18T00:00:00",
+               "ShipVia": "2",
+               "Freight": "33.68",
+               "ShipName": "Great Lakes Food Market",
+               "ShipAddress": "2732 Baker Blvd.",
+               "ShipCity": "Eugene",
+               "ShipRegion": "OR",
+               "ShipPostalCode": "97403",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "GREAL",
+            "EmployeeID": "3",
+            "OrderDate": "1998-04-07T00:00:00",
+            "RequiredDate": "1998-05-05T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1998-04-15T00:00:00",
+               "ShipVia": "2",
+               "Freight": "25.19",
+               "ShipName": "Great Lakes Food Market",
+               "ShipAddress": "2732 Baker Blvd.",
+               "ShipCity": "Eugene",
+               "ShipRegion": "OR",
+               "ShipPostalCode": "97403",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "GREAL",
+            "EmployeeID": "4",
+            "OrderDate": "1998-04-22T00:00:00",
+            "RequiredDate": "1998-05-20T00:00:00",
+            "ShipInfo": {
+               "ShipVia": "3",
+               "Freight": "18.84",
+               "ShipName": "Great Lakes Food Market",
+               "ShipAddress": "2732 Baker Blvd.",
+               "ShipCity": "Eugene",
+               "ShipRegion": "OR",
+               "ShipPostalCode": "97403",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "GREAL",
+            "EmployeeID": "4",
+            "OrderDate": "1998-04-30T00:00:00",
+            "RequiredDate": "1998-06-11T00:00:00",
+            "ShipInfo": {
+               "ShipVia": "3",
+               "Freight": "14.01",
+               "ShipName": "Great Lakes Food Market",
+               "ShipAddress": "2732 Baker Blvd.",
+               "ShipCity": "Eugene",
+               "ShipRegion": "OR",
+               "ShipPostalCode": "97403",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "HUNGC",
+            "EmployeeID": "3",
+            "OrderDate": "1996-12-06T00:00:00",
+            "RequiredDate": "1997-01-03T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1996-12-09T00:00:00",
+               "ShipVia": "2",
+               "Freight": "20.12",
+               "ShipName": "Hungry Coyote Import Store",
+               "ShipAddress": "City Center Plaza 516 Main St.",
+               "ShipCity": "Elgin",
+               "ShipRegion": "OR",
+               "ShipPostalCode": "97827",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "HUNGC",
+            "EmployeeID": "1",
+            "OrderDate": "1996-12-25T00:00:00",
+            "RequiredDate": "1997-01-22T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1997-01-03T00:00:00",
+               "ShipVia": "3",
+               "Freight": "30.34",
+               "ShipName": "Hungry Coyote Import Store",
+               "ShipAddress": "City Center Plaza 516 Main St.",
+               "ShipCity": "Elgin",
+               "ShipRegion": "OR",
+               "ShipPostalCode": "97827",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "HUNGC",
+            "EmployeeID": "3",
+            "OrderDate": "1997-01-15T00:00:00",
+            "RequiredDate": "1997-02-12T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1997-01-24T00:00:00",
+               "ShipVia": "1",
+               "Freight": "0.2",
+               "ShipName": "Hungry Coyote Import Store",
+               "ShipAddress": "City Center Plaza 516 Main St.",
+               "ShipCity": "Elgin",
+               "ShipRegion": "OR",
+               "ShipPostalCode": "97827",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "HUNGC",
+            "EmployeeID": "4",
+            "OrderDate": "1997-07-16T00:00:00",
+            "RequiredDate": "1997-08-13T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1997-07-21T00:00:00",
+               "ShipVia": "1",
+               "Freight": "45.13",
+               "ShipName": "Hungry Coyote Import Store",
+               "ShipAddress": "City Center Plaza 516 Main St.",
+               "ShipCity": "Elgin",
+               "ShipRegion": "OR",
+               "ShipPostalCode": "97827",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "HUNGC",
+            "EmployeeID": "8",
+            "OrderDate": "1997-09-08T00:00:00",
+            "RequiredDate": "1997-10-06T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1997-10-15T00:00:00",
+               "ShipVia": "1",
+               "Freight": "111.29",
+               "ShipName": "Hungry Coyote Import Store",
+               "ShipAddress": "City Center Plaza 516 Main St.",
+               "ShipCity": "Elgin",
+               "ShipRegion": "OR",
+               "ShipPostalCode": "97827",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "LAZYK",
+            "EmployeeID": "1",
+            "OrderDate": "1997-03-21T00:00:00",
+            "RequiredDate": "1997-04-18T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1997-04-10T00:00:00",
+               "ShipVia": "3",
+               "Freight": "7.48",
+               "ShipName": "Lazy K Kountry Store",
+               "ShipAddress": "12 Orchestra Terrace",
+               "ShipCity": "Walla Walla",
+               "ShipRegion": "WA",
+               "ShipPostalCode": "99362",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "LAZYK",
+            "EmployeeID": "8",
+            "OrderDate": "1997-05-22T00:00:00",
+            "RequiredDate": "1997-06-19T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1997-06-26T00:00:00",
+               "ShipVia": "2",
+               "Freight": "11.92",
+               "ShipName": "Lazy K Kountry Store",
+               "ShipAddress": "12 Orchestra Terrace",
+               "ShipCity": "Walla Walla",
+               "ShipRegion": "WA",
+               "ShipPostalCode": "99362",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "LETSS",
+            "EmployeeID": "1",
+            "OrderDate": "1997-06-25T00:00:00",
+            "RequiredDate": "1997-07-23T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1997-07-04T00:00:00",
+               "ShipVia": "2",
+               "Freight": "13.73",
+               "ShipName": "Let's Stop N Shop",
+               "ShipAddress": "87 Polk St. Suite 5",
+               "ShipCity": "San Francisco",
+               "ShipRegion": "CA",
+               "ShipPostalCode": "94117",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "LETSS",
+            "EmployeeID": "8",
+            "OrderDate": "1997-10-27T00:00:00",
+            "RequiredDate": "1997-11-24T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1997-11-05T00:00:00",
+               "ShipVia": "2",
+               "Freight": "51.44",
+               "ShipName": "Let's Stop N Shop",
+               "ShipAddress": "87 Polk St. Suite 5",
+               "ShipCity": "San Francisco",
+               "ShipRegion": "CA",
+               "ShipPostalCode": "94117",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "LETSS",
+            "EmployeeID": "6",
+            "OrderDate": "1997-11-10T00:00:00",
+            "RequiredDate": "1997-12-08T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1997-11-21T00:00:00",
+               "ShipVia": "2",
+               "Freight": "45.97",
+               "ShipName": "Let's Stop N Shop",
+               "ShipAddress": "87 Polk St. Suite 5",
+               "ShipCity": "San Francisco",
+               "ShipRegion": "CA",
+               "ShipPostalCode": "94117",
+               "ShipCountry": "USA"
+            }
+         },
+         {
+            "CustomerID": "LETSS",
+            "EmployeeID": "4",
+            "OrderDate": "1998-02-12T00:00:00",
+            "RequiredDate": "1998-03-12T00:00:00",
+            "ShipInfo": {
+               "@ShippedDate": "1998-02-13T00:00:00",
+               "ShipVia": "2",
+               "Freight": "90.97",
+               "ShipName": "Let's Stop N Shop",
+               "ShipAddress": "87 Polk St. Suite 5",
+               "ShipCity": "San Francisco",
+               "ShipRegion": "CA",
+               "ShipPostalCode": "94117",
+               "ShipCountry": "USA"
+            }
+         }
+      ]
+   }
+}

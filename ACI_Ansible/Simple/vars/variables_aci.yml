@@ -1,0 +1,14 @@
+---
+tenant: "Tenant_Ansible"
+vrf: "VRF_Ansible"
+bridge_domains:
+  - bd: "BD_Ansible"
+    gateway: "10.16.100.1"
+    mask: "24"
+    scope: "shared"
+ap: "AP_Ansible"
+epgs:
+  - epg: "EPG_Ansible"
+    bd: "BD_Ansible"
+
+

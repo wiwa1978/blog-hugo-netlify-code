@@ -1,0 +1,31 @@
+{# DEMO NETPALM SERVICE#}
+{# CREATES VLANS ON MULTIPLE HOSTS #}
+{#
+!!!! EXAMPLE PAYLOAD TO SEND IN TO SERVICE API AS BELOW
+{
+	"operation": "create",
+	"args":{
+		"hosts":["ios-xe-mgmt-latest.cisco.com"],
+		"username":"developer",
+		"password":"C1sco12345"
+	}
+}
+or 
+{
+	"operation": "retrieve",
+	"args":{
+		"hosts":["ios-xe-mgmt-latest.cisco.com"],
+		"username":"developer",
+		"password":"C1sco12345"
+	}
+}
+or
+{
+	"operation": "delete",
+	"args":{
+		"hosts":["ios-xe-mgmt-latest.cisco.com"],
+		"username":"developer",
+		"password":"C1sco12345"
+	}
+}
+#}

@@ -1,0 +1,21 @@
+---
+- name: Configure loopback using ios_interface
+  hosts: iosxe
+  gather_facts: no
+  vars_files:
+    - vars/loopbacks.yaml
+
+  tasks:
+    - name: get facts from device
+      napalm_get_facts:
+        username: "{{ ansible_user }}"
+        password: "{{ ansible_ssh_pass }}"
+        filter: facts,interfaces
+        optional_args:
+          port: 8181
+      register: result
+
+    - name: print data
+      debug: var=result
+
+

@@ -1,0 +1,8 @@
+[apic]
+sandboxapicdc.cisco.com
+
+[apic:vars]
+ansible_connection = local
+ansible_python_interpreter = /usr/bin/python3
+username = admin
+password = ciscopsdt

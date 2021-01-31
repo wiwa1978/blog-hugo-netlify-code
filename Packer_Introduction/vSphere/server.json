@@ -1,0 +1,69 @@
+{
+    "builders": [
+      {
+        "type": "vsphere-iso",
+        "username": "{{user `vcenter-username`}}",
+        "vcenter_server": "{{user `vcenter-server`}}",
+        "insecure_connection": "true",
+        "vm_name": "{{user `vm-name`}}",
+        "CPUs": "{{user `vm-cpu-num`}}",
+        "RAM": "{{user `vm-mem-size`}}",
+        "RAM_reserve_all": true,
+        "cluster": "{{user `cluster`}}",
+        "convert_to_template": "true",
+        "datacenter": "{{user `datacenter`}}",
+        "datastore": "{{user `datastore`}}",
+        "folder": "{{user `folder`}}",
+        "guest_os_type": "ubuntu64Guest",
+        "host": "{{user `host`}}",
+        "boot_command": [
+          "<enter><wait><f6><wait><esc><wait>",
+          "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+          "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+          "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+          "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+          "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+          "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+          "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+          "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+          "<bs><bs><bs>",
+          "/install/vmlinuz",
+          " initrd=/install/initrd.gz",
+          " priority=critical",
+          " locale=en_US",
+          " file=/media/preseed.cfg",
+          "<enter>"
+        ],
+        "boot_order": "disk,cdrom",
+        "disk_controller_type": "pvscsi",
+        "floppy_files": [
+          "./preseed.cfg"
+        ],
+        "iso_checksum": "{{user `iso-checksum-type`}}:{{user `iso-checksum`}}",
+        "iso_urls": "{{user `iso-url`}}",
+        "network_adapters": [
+          {
+            "network": "{{user `network`}}",
+            "network_card": "vmxnet3"
+          }
+        ],
+        "password": "{{user `vcenter-password`}}",
+        "ssh_password": "{{user `ssh-password`}}",
+        "ssh_username": "{{user `ssh-username`}}",
+        "storage": [
+          {
+            "disk_size": "{{user `vm-disk-size`}}",
+            "disk_thin_provisioned": true
+          }
+        ],
+      }
+    ],
+    "provisioners": [
+      {
+        "inline": [
+          "echo 'Packer Template Build -- Complete'"
+        ],
+        "type": "shell"
+      }
+    ]
+  }

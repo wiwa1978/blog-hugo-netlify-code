@@ -1,0 +1,9 @@
+interfaces:
+  Loopback2000:
+    description: Description for Loopback 2000
+    ipv4_addr: 200.200.200.200
+    ipv4_mask: 255.255.255.255
+  Loopback2001:
+    description: Description for Loopback 2001
+    ipv4_addr: 200.200.200.201
+    ipv4_mask: 255.255.255.255

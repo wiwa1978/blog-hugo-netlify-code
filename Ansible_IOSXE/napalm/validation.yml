@@ -1,0 +1,10 @@
+---
+- get_facts:
+    os_version: 16.11.1a
+    vendor: Cisco
+
+- get_interfaces_ip:
+    Loopback100:
+      ipv4:
+        4.4.4.102:
+          prefix_length: 32

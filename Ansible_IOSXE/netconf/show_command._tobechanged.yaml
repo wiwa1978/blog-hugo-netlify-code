@@ -1,0 +1,13 @@
+---
+- name: NETCONF sample 1
+  hosts: iosxe
+  connection: netconf
+  gather_facts: False
+
+  tasks:
+    - name: run multiple commands
+      netconf_get:
+        source: running
+        
+
+  

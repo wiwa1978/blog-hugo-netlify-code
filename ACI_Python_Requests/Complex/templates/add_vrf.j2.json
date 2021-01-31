@@ -1,0 +1,13 @@
+{
+   "fvTenant": {
+     "attributes": { "name": "{{tenant_name}}" },
+     "children": [
+       {
+         "fvCtx": {
+           "attributes": { "name": "{{vrf_name}}", "pcEnfPref": "enforced" },
+           "children": []
+         }
+       }
+     ]
+   }
+ }

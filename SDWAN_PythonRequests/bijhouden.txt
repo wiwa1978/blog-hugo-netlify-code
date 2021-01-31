@@ -1,0 +1,9 @@
+
+    for template in templates:
+        print({template['deviceType']})
+        
+        if isinstance({template['deviceType']}, list):
+            print("this is a list")
+        else:
+            print(f"Template => {template['deviceType']} with id {template['templateId']}")
+    

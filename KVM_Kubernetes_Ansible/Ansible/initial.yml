@@ -1,0 +1,16 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: create the 'wim' user
+      user: name=wim append=yes state=present createhome=yes shell=/bin/bash
+
+    - name: allow 'wim' to have passwordless sudo
+      lineinfile:
+        dest: /etc/sudoers
+        line: 'wim ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+
+    - name: set up authorized keys for the ubuntu user
+      authorized_key: user=wim key="{{item}}"
+      with_file:
+        - /Users/wauterw/GoogleDrive/Keys_and_Certificates/homelab.pub

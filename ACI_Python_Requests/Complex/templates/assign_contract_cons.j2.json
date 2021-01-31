@@ -1,0 +1,11 @@
+{
+	"fvRsCons":
+	{
+		"attributes":
+		{
+			"tnVzBrCPName":"{{contract_name}}",
+			"status":"created,modified"
+		},
+		"children":[]
+	}
+}

@@ -1,0 +1,10 @@
+---
+- name: Restconf - Config
+  hosts: iosxe
+
+  tasks:
+  - name:  Create interfaces with IETF YANG model
+    restconf_config:
+      path: /data/ietf-interfaces:interfaces
+      content: "{{ loopback_interfaces | to_json }}"
+

@@ -1,0 +1,18 @@
+---
+- name: Restconf - GET
+  hosts: iosxe
+  connection: local
+
+  tasks:
+  - name: Get interfaces from IETF YANG model
+    restconf_get:
+      content: config
+      output: json
+      path: /data/ietf-interfaces:interfaces
+    register: output
+
+  - name: display all
+    debug:
+      var: output
+
+  

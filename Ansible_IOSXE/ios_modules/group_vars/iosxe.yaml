@@ -1,0 +1,10 @@
+ansible_connection : local
+ansible_python_interpreter : /usr/bin/python3
+host_key_checking : False
+ansible_ssh_user : developer
+ansible_ssh_pass : C1sco12345
+ansible_port: 8181
+
+commands:
+  - "show version"
+  - "show ip interface brief"

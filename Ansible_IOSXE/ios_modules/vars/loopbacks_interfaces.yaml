@@ -1,0 +1,7 @@
+---
+loopbacks_interfaces: 
+  - loopbackinterface: "interface Loopback100"
+  - loopbackinterface: "interface Loopback101"
+  - loopbackinterface: "interface Loopback102"
+  - loopbackinterface: "interface Loopback103"
+

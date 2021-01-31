@@ -1,0 +1,46 @@
+{
+    "interface": [
+       {
+          "name": "Loopback200010",
+          "description": "Loopback via Ansible Restconf",
+          "type": "iana-if-type:softwareLoopback",
+          "enabled": true,
+          "ietf-ip:ipv4": {
+             "address": [
+                {
+                   "ip": "10.0.12.22",
+                   "netmask": "255.255.255.255"
+                }
+             ]
+          }
+       },
+       {
+          "name": "Loopback200011",
+          "description": "Loopback via Ansible Restconf",
+          "type": "iana-if-type:softwareLoopback",
+          "enabled": true,
+          "ietf-ip:ipv4": {
+             "address": [
+                {
+                   "ip": "10.0.12.23",
+                   "netmask": "255.255.255.255"
+                }
+             ]
+          }
+       },
+       {
+          "name": "Loopback200012",
+          "description": "Loopback via Ansible Restconf",
+          "type": "iana-if-type:softwareLoopback",
+          "enabled": true,
+          "ietf-ip:ipv4": {
+             "address": [
+                {
+                   "ip": "10.0.12.24",
+                   "netmask": "255.255.255.255"
+                }
+             ]
+          }
+       }
+    ]
+ }

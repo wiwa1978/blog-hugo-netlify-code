@@ -1,0 +1,240 @@
+- name: Full ACI configuration
+  hosts: apic
+  connection: local
+  gather_facts: False
+  vars_files:
+    - vars/variables_aci.yml
+  vars:
+    aci_login: &aci_login
+      hostname: '{{ inventory_hostname }}'
+      username: '{{ username }}'
+      password: '{{ password }}' 
+      validate_certs: False     
+  
+  tasks:
+    - name: Task 01 - Create Tenant
+      aci_tenant:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        descr: "Tenant Created Using Ansible"
+      tags: tenant, vrf, bd, filter, contract, app, epg
+
+    - name: Task 02 - Create VRF
+      aci_vrf:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        vrf: "{{ vrf }}"
+        descr: "VRF Created Using Ansible"
+      tags: vrf, bd
+
+    - name: Task 03 - Create BD
+      aci_bd:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        bd: "{{ item.bd | default('prod_bd') }}"
+        vrf: "{{ vrf }}"
+      with_items: "{{ bridge_domains }}"
+      tags: bd
+    
+    - name: Task 03A - Attach L3Out to BD
+      aci_bd_to_l3out:
+        <<: *aci_login
+        state: "present"
+        bd: "{{ item.bd }}"
+        tenant: "{{ tenant }}"
+        l3out: "labinfra-l3out-ro"
+      with_items: "{{ bridge_domains }}"
+      tags: bd
+
+    - name: Task 04 - Create Subnet
+      aci_bd_subnet:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        bd: "{{ item.bd }}"
+        gateway: "{{ item.gateway }}"
+        mask: "{{ item.mask }}"
+        scope: ["public", "shared"]
+      with_items: "{{ bridge_domains }}"
+
+    - name: Task 05A - Create Filter - ICMP
+      aci_filter:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        filter: "{{ item.filter }}"
+        descr: "Filter Created Using Ansible"
+      with_items: "{{ filters_icmp }}"
+      tags: filter, contract
+
+    - name: Task 06A - Create Filter Entries - ICMP
+      aci_filter_entry:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        filter: "{{ item.filter }}"
+        entry: "{{ item.entry }}"
+        ether_type: "ip"
+        ip_protocol: "{{ item.protocol }}"
+      with_items: "{{ filters_icmp }}"
+      tags: filter, contract
+
+    - name: Task 07A - Create Contract - ICMP
+      aci_contract:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        contract: "{{ item.contract }}"
+        scope: "context"
+        description: "Contract Created Using Ansible"
+      with_items: "{{ contracts_icmp }}"
+      tags: contract
+
+    - name: Task 08A - Create Contract Subjects - icmp
+      aci_contract_subject:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        contract: "{{ item.contract }}"
+        subject: "{{ item.subject }}"
+      with_items: "{{ contracts_icmp }}"
+      tags: contract
+
+    - name: Task 09A - Ensure Contract Subjects Have Filters - icmp
+      aci_contract_subject_to_filter:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        contract: "{{ item.contract }}"
+        subject: "{{ item.subject }}"
+        filter: "{{ item.filter }}"
+      with_items: "{{ contracts_icmp }}"
+      tags: contract
+
+    - name: Task 09B - Ensure Tenant Contracts Exist - Common
+      aci_contract:
+        <<: *aci_login
+        state: "present"
+        tenant: "common"
+        contract: "ctr_internet"
+        scope: "context"
+        description: "Contract Created Using Ansible"
+      tags: contract
+
+    - name: Task 05 - Ensure Tenant Filters Exist - Other protocols
+      aci_filter:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        filter: "{{ item.filter }}"
+        descr: "Filter Created Using Ansible"
+      with_items: "{{ filters }}"
+      tags: filter, contract
+
+    - name: Task 06 - Ensure Filters Have Filter Entries - other protocols
+      aci_filter_entry:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        filter: "{{ item.filter }}"
+        entry: "{{ item.entry }}"
+        ether_type: "ip"
+        ip_protocol: "{{ item.protocol }}"
+        dst_port_start: "{{ item.port }}"
+        dst_port_end: "{{ item.port }}"
+        stateful: yes
+      with_items: "{{ filters }}"
+      tags: filter, contract
+
+    - name: Task 07 - Ensure Tenant Contracts Exist
+      aci_contract:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        contract: "{{ item.contract }}"
+        scope: "context"
+        description: "Contract Created Using Ansible"
+      with_items: "{{ contracts }}"
+      tags: contract
+
+    - name: Task 08 - Ensure Contracts Have Contract Subjects
+      aci_contract_subject:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        contract: "{{ item.contract }}"
+        subject: "{{ item.subject }}"
+      with_items: "{{ contracts }}"
+      tags: contract
+    
+    - name: Task 09 - Ensure Contract Subjects Have Filters
+      aci_contract_subject_to_filter:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        contract: "{{ item.contract }}"
+        subject: "{{ item.subject }}"
+        filter: "{{ item.filter }}"
+      with_items: "{{ contracts }}"
+      tags: contract
+
+    - name: Task 10 - Ensure Application Exists
+      aci_ap:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        ap: "{{ ap }}"
+        descr: "App Profile Created Using Ansible "
+      tags: app, epg
+
+    - name: Task 11 - Ensure Application EPGs Exists
+      aci_epg:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        ap: "{{ ap }}"
+        epg: "{{ item.epg }}"
+        bd: "{{ item.bd }}"
+        descr: "EPG Created Using Ansible"
+      with_items: "{{ epgs }}"
+      tags: epg
+
+    - name: Task 12 - Ensure Domain Is Bound To EPG
+      aci_epg_to_domain:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        ap: "{{ ap }}"
+        epg: "{{ item.epg }}"
+        domain: "dvs-demo-dynamic"
+        domain_type: "vmm"
+        vm_provider: "vmware"
+      with_items: "{{ epgs }}"
+      tags: epg
+
+    - name: Task 13 - Ensure EPGs Have Contracts
+      aci_epg_to_contract:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        ap: "{{ ap }}"
+        epg: "{{ item.epg }}"
+        contract: "{{ item.contract }}"
+        contract_type: "{{ item.contract_type }}"
+      with_items: "{{ epg_contracts }}"
+      tags: epg
+    
+    - name: Task 13A - Ensure EPGs Have Common Contract ctr-extnet
+      aci_epg_to_contract:
+        <<: *aci_login
+        state: "present"
+        tenant: "{{ tenant }}"
+        ap: "{{ ap }}"
+        epg: "{{ item.epg }}"
+        contract: "ctr-extnet"
+        contract_type: "consumer"
+      with_items: "{{ epg_contracts }}"
+      tags: epg

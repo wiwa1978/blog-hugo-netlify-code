@@ -1,0 +1,12 @@
+{
+   "fvTenant": {
+     "attributes": {
+       "dn": "uni/tn-{{name}}",
+       "name": "{{name}}",
+       "descr": "{{description}}",
+       "rn": "tn-{{name}}",
+       "status": "created"
+     },
+     "children": []
+   }
+}

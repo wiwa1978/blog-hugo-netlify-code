@@ -1,0 +1,10 @@
+---
+- get_facts:
+    os_version: 6.5.3
+    vendor: Cisco
+
+- get_interfaces_ip:
+    Loopback200:
+      ipv4:
+        1.1.1.200:
+          prefix_length: 32

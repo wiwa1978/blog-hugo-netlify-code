@@ -1,0 +1,8 @@
+interface Loopback100
+description LOOPBACK 100
+ ip address 4.4.4.101 255.255.255.255
+!
+interface Loopback200
+description LOOPBACK 200
+ ip address 1.1.1.20 255.255.255.255
+end

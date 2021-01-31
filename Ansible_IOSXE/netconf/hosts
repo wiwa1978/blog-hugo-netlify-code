@@ -1,0 +1,5 @@
+[all:vars]
+ansible_python_interpreter="/usr/bin/python3"
+
+[iosxe]
+ios-xe-mgmt.cisco.com ansible_port=8181

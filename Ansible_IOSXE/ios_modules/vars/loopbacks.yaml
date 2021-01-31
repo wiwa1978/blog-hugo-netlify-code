@@ -1,0 +1,14 @@
+---
+loopbacks: 
+  - loopbackname: "Loopback100"
+    ip: "10.16.100.100"
+    mask: "32"
+  - loopbackname: "Loopback101"
+    ip: "10.16.100.101"
+    mask: "32"
+  - loopbackname: "Loopback102"
+    ip: "10.16.100.102"
+    mask: "32"
+  - loopbackname: "Loopback103"
+    ip: "10.16.100.103"
+    mask: "32"

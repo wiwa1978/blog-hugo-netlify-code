@@ -1,0 +1,19 @@
+---
+- name: Retrieve interfaces
+  hosts: iosxe
+  gather_facts: no
+
+  tasks:
+    - name: get facts from device
+      napalm_get_facts:
+        username: "{{ ansible_user }}"
+        password: "{{ ansible_ssh_pass }}"
+        filter: interfaces_ip
+        optional_args:
+          port: 8181
+      register: result
+
+    - name: print data
+      debug: var=result
+
+

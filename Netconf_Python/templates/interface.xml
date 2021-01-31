@@ -1,0 +1,17 @@
+<config>
+   <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+      <interface>
+         <name xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">GigabitEthernet3</name>
+         <description>{description}</description>
+         <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+         <enabled>false</enabled>
+         <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+            <address>
+               <ip>87.2.3.4</ip>
+               <netmask>255.255.255.0</netmask>
+            </address>
+         </ipv4>
+         <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"/>
+      </interface>
+   </interfaces>
+</config>

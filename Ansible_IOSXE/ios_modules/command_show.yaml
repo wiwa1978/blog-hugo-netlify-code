@@ -1,0 +1,31 @@
+---
+- name: Show examples
+  hosts: iosxe
+  gather_facts: no
+
+  tasks:
+  - name: GATHERING FACTS
+    ios_facts:
+      gather_subset: all
+
+  - name: run show version
+    ios_command:
+      commands: show version
+    register: version
+  
+  - name: display version
+    debug:
+      var: version["stdout_lines"][0]
+
+  - name: run show ip int brief
+    ios_command:
+      commands: show ip interface brief
+    register: interfaces
+
+  - name: display interfaces
+    debug:
+      var: interfaces["stdout_lines"][0]
+
+  - name: What is IOS interfaces
+    debug:
+      var: ansible_net_all_ipv4_addresses

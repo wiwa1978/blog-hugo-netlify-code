@@ -1,0 +1,84 @@
+[
+  {% for host in hosts %}
+  {
+    "supported_methods": [
+      {
+        "operation": "create",
+        "payload": {
+          "library": "napalm",
+          "connection_args": {
+            "device_type": "{{host['device_type']}}",
+            "host": "{{host['name']}}",
+            "username": "{{host['username']}}",
+            "password": "{{host['password']}}",
+            "optional_args": {"port": 8181}
+          },
+        "j2config": {
+    	    "template":"loopback_create",
+    	    "args":{
+              "interfaces": [
+                {
+                  "name": "Loopback250",
+                  "description": "Description for Loopback 250",
+                  "ipv4_addr": "200.200.200.20",
+                  "ipv4_mask": "255.255.255.255"
+                },
+                {
+                  "name": "Loopback251",
+                  "description": "Description for Loopback 251",
+                  "ipv4_addr": "200.200.200.21",
+                  "ipv4_mask": "255.255.255.255"
+                }
+              ]
+            }
+    	    }
+        
+      }
+      },
+      {
+        "operation": "retrieve",
+        "payload": {
+          "library": "netmiko",
+          "connection_args": {
+            "device_type": "{{host['device_type']}}",
+            "host": "{{host['name']}}",
+            "username": "{{host['username']}}",
+            "password": "{{host['password']}}",
+            "port": "8181"
+          },
+        "command": "show ip interface brief",
+        "args":{
+    	    "use_textfsm":true
+        }
+        }
+      },
+      {
+        "operation": "delete",
+        "payload": {
+          "library": "napalm",
+          "connection_args": {
+            "device_type": "{{host['device_type']}}",
+            "host": "{{host['name']}}",
+            "username": "{{host['username']}}",
+            "password": "{{host['password']}}",
+            "optional_args": {"port": 8181}
+          },
+        "j2config": {
+    	    "template":"loopback_remove",
+    	    "args":{
+    		    "interfaces": [
+                {
+                  "name": "Loopback250"
+                },
+                {
+                  "name": "Loopback251"
+                }
+              ]
+    	    }
+        }
+      }
+      }
+    ]
+  }{% if not loop.last %},{% endif %}{# THIS IS REQUIRED TO CONSTRUCT THE DATA CORRECTLY #}
+  {% endfor -%}
+]

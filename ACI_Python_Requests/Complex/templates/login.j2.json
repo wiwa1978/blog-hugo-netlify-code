@@ -1,0 +1,8 @@
+{
+   "aaaUser": {
+     "attributes": {
+       "name": "{{ username }}",
+       "pwd": "{{ password }}"
+     }
+   }
+ }

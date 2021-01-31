@@ -1,0 +1,16 @@
+appdirs==1.4.3
+certifi==2019.11.28
+chardet==3.0.4
+Click==7.0
+filelock==3.0.12
+Flask==1.1.1
+idna==2.8
+itsdangerous==1.1.0
+Jinja2==2.11.1
+MarkupSafe==1.1.1
+requests==2.22.0
+six==1.14.0
+urllib3==1.25.8
+virtualenv==20.0.0
+Werkzeug==1.0.0
+gunicorn==19.7.1

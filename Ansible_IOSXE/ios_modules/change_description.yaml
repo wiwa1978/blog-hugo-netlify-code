@@ -1,0 +1,13 @@
+#simple IOS config in ansible
+---
+- name: Change interface description
+  hosts: iosxe
+  gather_facts: no
+
+  tasks:
+    - name: configure interface settings
+      ios_config:
+        lines:
+          - description Changed through Ansible
+          - ip address 172.31.1.1 255.255.255.0
+        parents: interface GigabitEthernet3

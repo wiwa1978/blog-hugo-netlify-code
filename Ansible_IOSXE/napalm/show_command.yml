@@ -1,0 +1,24 @@
+---
+- name: Execute commands
+  hosts: iosxe
+  gather_facts: no
+
+  tasks:
+    - name: Execute commands
+      napalm_cli:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ ansible_user }}"
+        password: "{{ ansible_ssh_pass }}"
+        dev_os: "ios"
+        optional_args:
+          port: 8181
+        args:
+          commands:
+            - show version
+            - show ip interface brief
+      register: result
+
+    - name: print data
+      debug: var=result
+
+

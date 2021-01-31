@@ -1,0 +1,13 @@
+{
+   "type": "floor",
+   "site": {
+      "floor": {
+            "name": "{{floor_name}}",
+            "parentName": "Global/{{site_name}}/{{building_name}}",
+            "rfModel": "Cubes and Walled Offices",
+            "width": "20",
+            "length": "30",
+            "height": "10"
+      }
+   }
+}

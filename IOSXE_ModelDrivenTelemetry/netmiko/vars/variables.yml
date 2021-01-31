@@ -1,0 +1,8 @@
+subscriptions:
+  120:
+    xpath: "/process-cpu-ios-xe-oper:cpu-usage/cpu-utilization/five-seconds"
+    period: 1000
+  130:
+    xpath: "/memory-ios-xe-oper:memory-statistics/memory-statistic"
+    period: 1000
+  

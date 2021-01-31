@@ -1,0 +1,9 @@
+---
+tenant: "Tenant_Wim"
+vrf: "VRF_Wim"
+bridge_domains:
+  - bd: "BD_Wim"
+    gateway: "10.16.100.1"
+    mask: "24"
+    scope: "shared"
+    l3_out: "labinfra-l3out-ro"

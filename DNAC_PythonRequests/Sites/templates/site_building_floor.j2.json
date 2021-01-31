@@ -1,0 +1,24 @@
+{
+   "type": "area",
+   "site": {
+     "area": {
+       "name": "{{site_name}}",
+       "parentName": "Global"
+     },
+     "building": {
+       "name": "{{building_name}}",
+       "address": "123 Main Street",
+       "parentName": "Global/{{site_name}}",
+       "latitude": "51.0458",
+       "longitude": "5.6413"
+     },
+     "floor": {
+       "name": "{{floor_name}}",
+       "parentName": "Global/{{site_name}}/{{building_name}}",
+       "rfModel": "Cubes and Walled Offices",
+       "width": "50",
+       "length": "60",
+       "height": "10"
+     }
+   }
+ }

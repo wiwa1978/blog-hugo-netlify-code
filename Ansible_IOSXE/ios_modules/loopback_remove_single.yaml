@@ -1,0 +1,10 @@
+---
+- name: Delete interfaces
+  hosts: iosxe
+  gather_facts: no
+
+  tasks:
+  - name: Delete loopback 100
+    ios_interface:
+      name: Loopback100
+      state: absent

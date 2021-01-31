@@ -1,0 +1,9 @@
+interfaces:
+  - name: Loopback3001
+    description: Description for Loopback 3001
+    ipv4_addr: 200.200.200.230
+    ipv4_mask: 255.255.255.255
+  - name:  Loopback3002
+    description: Description for Loopback 3002
+    ipv4_addr: 200.200.200.231
+    ipv4_mask: 255.255.255.255

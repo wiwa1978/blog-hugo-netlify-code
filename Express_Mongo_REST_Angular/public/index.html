@@ -1,0 +1,93 @@
+<!DOCTYPE>
+<html ng-app='myApp'>
+<head>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+	<title>Todo application</title>
+</head>
+
+<body>
+<div class="container" ng-controller="AppCtrl">
+	<h1>Todo Application</h1>
+	<table class="table">
+
+		<thead>
+			<tr>
+				<th>Content</th>
+				<th>Description</th>
+				<th>Status</th>
+				<th>Created</th>
+				<th>Updated</th>
+				<th>Action</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+          		<td><input class="form-control" ng-model="todo.content"></td>
+          		<td><input class="form-control" ng-model="todo.description"></td>
+          		<td>
+          				<div ng-if="todo.edit == true">
+    					<div class="form-group">
+				            <div class="radio">
+				                <label>
+				                    <input type="radio" name="true" value="true" ng-model="todo.completed">
+				                    Completed
+				                </label>
+				            </div>
+				            <div class="radio">
+				                <label>
+				                    <input type="radio" name="false" value="false" ng-model="todo.completed">
+				                    Pending
+				                </label>
+				            </div>
+				        </div>
+						</div>
+					
+		        </td>
+          		<td></td>
+          		<td></td>
+          		<td>
+          			<div ng-if="todo.edit == true">
+    					<button class="btn btn-primary" ng-click="updateTodo()">Update Todo</button>
+					</div>
+					<div ng-if="todo.edit != true">
+    					<button class="btn btn-primary" ng-click="addTodo()">Add Todo</button>
+					</div>
+          		</td>
+
+        	</tr>
+        	<tr ng-repeat="todo in todolist">
+				<td>{{todo.content}}</td>
+				<td>{{todo.description}}</td>
+				<td>
+					  	<div ng-if="todo.completed == true">
+    						<span class="label label-success">Completed</span>
+						</div>
+						<div ng-if="todo.completed != true">
+    						<span class="label label-warning">Pending</span>
+						</div>
+				</td>
+				<td>{{todo.created_at| date:'dd-MM-yyyy -- HH:mm:ss'}}</td>
+				<td>{{todo.updated_at| date:'dd-MM-yyyy -- HH:mm:ss'}}</td>
+				<td>
+					<button class="btn btn-success" ng-click="editTodo(todo._id)">Edit</button>
+					<button class="btn btn-danger" ng-click="removeTodo(todo._id)">Remove</button>
+				</td>
+				
+
+			</tr>
+		</tbody>	
+	</table>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+<script src="controllers/controller.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+    "vm-name":            "Ubuntu-Packer",
+    "vcenter-server":     "vcenter-amslab.cisco.com",
+    "vcenter-username":   "administrator@vsphere.local",
+    "vcenter-password":   "C!sco12345",
+    "datacenter":         "Amsterdam",
+    "datastore":          "HX-CONTENT-ACI",
+    "folder":             "wauterw",
+    "cluster":            "HX-ACI",
+    "network":            "vm-network-98",
+    "vm-cpu-num":         "1",
+    "vm-mem-size":        "1024",
+    "vm-disk-size":       "10240",
+    "ssh-username":       "cisco",
+    "ssh-password":       "C!sco12345",
+    "iso-url":            "http://cdimage.ubuntu.com/releases/18.04/release/ubuntu-18.04.5-server-amd64.iso",
+    "iso-checksum":       "8c5fc24894394035402f66f3824beb7234b757dd2b5531379cb310cedfdf0996",
+    "iso-checksum-type":  "sha256"
+  }

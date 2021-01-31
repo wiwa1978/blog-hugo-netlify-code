@@ -1,0 +1,21 @@
+---
+- name: Getting started
+  hosts: iosxe
+  gather_facts: no
+
+  tasks:
+  - name: GATHERING FACTS
+    ios_facts:
+      gather_subset: hardware
+
+  - name: run multiple commands
+    ios_command:
+      commands: 
+        - show version
+        - show ip interface brief
+    register: output
+
+  - name: display all
+    debug:
+      var: output["stdout_lines"]
+  

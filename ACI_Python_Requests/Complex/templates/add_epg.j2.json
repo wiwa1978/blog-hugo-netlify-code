@@ -1,0 +1,24 @@
+{
+	"fvAEPg":
+		{
+			"attributes":{
+				"dn":"uni/tn-{{tenant_name}}/ap-{{ap_name}}/epg-{{epg_name}}",
+				"name":"{{epg_name}}",
+				"rn":"epg-{{epg_name}}",
+				"status":"created"
+			},
+			"children":[
+				{
+					"fvRsBd":
+						{
+							"attributes":
+								{
+									"tnFvBDName":"{{bd_name}}",
+								    "status":"created,modified"
+								},
+							"children":[]
+						}
+				}
+			]
+		}
+}

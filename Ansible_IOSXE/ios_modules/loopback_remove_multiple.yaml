@@ -1,0 +1,13 @@
+---
+- name: Delete interfaces
+  hosts: iosxe
+  gather_facts: no
+  vars_files:
+    - vars/loopbacks.yaml
+  
+  tasks:
+  - name: Delete loopback interfaces
+    ios_interface:
+      name: "{{ item.loopbackname }}"
+      state: absent
+    with_items: "{{ loopbacks }}"

@@ -1,0 +1,8 @@
+[apic]
+10.48.108.214
+
+[apic:vars]
+ansible_connection = local
+ansible_python_interpreter = /usr/bin/python3
+username = admin
+password = ---

@@ -1,0 +1,22 @@
+---
+- name: Configure loopback using ios_interface
+  hosts: iosxe
+  gather_facts: no
+  vars_files:
+    - vars/loopbacks.yaml
+    - vars/loopbacks_interfaces.yaml
+
+  tasks:
+    - name: Creating loopback 
+      ios_interface:
+        name: "{{ item.loopbackname }}"
+        enabled: True
+        description: Loopback interface created with Ansible
+      with_items: "{{ loopbacks }}"
+
+    - name: Change description
+      ios_config:
+        lines:
+          - description Loopback interface changed through Ansible
+        parents: "{{item.loopbackinterface}}"
+      with_items: "{{ loopbacks_interfaces }}"
