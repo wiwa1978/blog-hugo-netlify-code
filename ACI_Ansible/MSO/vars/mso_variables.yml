@@ -1,18 +1,22 @@
 ---
 tenant: Tenant_Wim
-schema: "Schema_Wim"
-template: "Template_Wim"
-vrf: "mso_vrf"
-bd: "mso_bd"
-anp: "intranet"
-epg: "mso_epg"
-filter: "https"
-filter_schema: "mso_schema"
-filter_template: "Template_Wim"
-entry: "https"
-contract_filter_type: "one-way"
-filter_type: "consumer-to-provider"
+schema: Schema_Wim
+template: Template_Wim
+vrf: mso_vrf
+bd: mso_bd
+anp: mso_anp
+epg: mso_epg
+filter: filter_any
+entry: any
+filter_schema: Schema_Wim
+filter_template: Template_Wim
+contract_filter_type: both-way
+filter_type: both-way
+contract_name: ctr-mso-allow-all
+contract_template: Template_Wim
+contract_type: provider
 contracts:
-  - name: "web"
-    template: "Template_Wim"
-    type: "provider"
+    - name: "ctr-mso-allow-all"
+      template: "Template_Wim"
+      type: "provider"
+    

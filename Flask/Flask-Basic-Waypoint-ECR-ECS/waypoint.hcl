@@ -1,25 +1,29 @@
-project = "Flask ECR ECS"
+project = "Flask Basic application with ECR and ECS"
 
-app "flask_ecr_ecs" {
+app "flask-ecs" {
     labels = {
-        "service" = "flask-todo",
-        "env"     = "dev"
+      "service" = "flask-basic",
+      "env"     = "dev"
     }
+
     build {
-        use "pack" {}
-        registry {
+      use "pack" {
+        builder     = "heroku/buildpacks:develop"
+        disable_entrypoint = false
+      }
+      registry {
         use "aws-ecr" {
-            region = "us-east-1"
-            repository = "waypoint-example"
-            tag = "latest"
+          region = "eu-central-1"
+          repository = "flask-basic-waypoint-ecs"
+          tag = "latest"
         }
-        }
+      }
     }
 
     deploy {
-        use "aws-ecs" {
-            region = "us-east-1"
-            memory = "512"
-        }
+      use "aws-ecs" {
+        region = "eu-central-1"
+        memory = "512"
+      }
     }
 }

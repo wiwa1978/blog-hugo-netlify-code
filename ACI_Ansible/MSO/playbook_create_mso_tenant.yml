@@ -13,14 +13,14 @@
       validate_certs: False     
   
   tasks:
-    - name: ENSURE APPLICATIONS TENANT EXISTS
+    - name: Create Tenant
       cisco.mso.mso_tenant:
         <<: *mso_login
         state: "present"
         tenant: "{{ tenant }}"
         description: "Tenant Created Using Ansible"
 
-    - name: ENSURE SCHEMA WITH TEMPLATE EXISTS
+    - name: Create Schema & Template
       cisco.mso.mso_schema_template:
         <<: *mso_login
         state: "present"
@@ -28,7 +28,7 @@
         tenant: "{{ tenant }}"
         template: "{{ template }}"
 
-    - name: ENSURE SCHEMA WITH VRF EXISTS
+    - name: Create VRF
       cisco.mso.mso_schema_template_vrf:
         <<: *mso_login
         state: "present"
@@ -36,7 +36,7 @@
         template: "{{ template }}"
         vrf: "{{ vrf }}"
 
-    - name: ENSURE SCHEMA WITH BRIDGE DOMAIN EXISTS
+    - name: Create Bridge Domain
       cisco.mso.mso_schema_template_bd:
         <<: *mso_login
         state: "present"
@@ -49,33 +49,37 @@
           schema: "{{ schema }}"
           template: "{{ template }}"
 
-    - name: ENSURE SCHEMA FILTERS EXIST
+    - name: Create Filter
       cisco.mso.mso_schema_template_filter_entry:
         <<: *mso_login
         state: "present"
         schema: "{{ schema }}"
         template: "{{ template }}"
         filter: "{{ filter }}"
+        ethertype: "ipv4"
+        ip_protocol: "tcp"
+        destination_from: "unspecified"
+        destination_to: "unspecified"
+        source_from: "unspecified"
+        source_to: "unspecified"
         entry: "{{ entry }}"
+        arp_flag: "unspecified"
 
-    - name: ENSURE SCHEMA CONTRACTS EXIST
+    - name: Create Contract
       cisco.mso.mso_schema_template_contract_filter:
         <<: *mso_login
         state: "present"
         schema: "{{ schema }}"
         template: "{{ template }}"
         filter: "{{ filter }}"
-        filter_schema: "{{ schema }}"
-        filter_template: "{{ template }}"
-        contract_filter_type: "{{ contract_filter_type }}"
+        filter_schema: "{{ filter_schema }}"
+        filter_template: "{{ filter_template }}"
         filter_type: "{{ filter_type }}"
-        contract:
-          name: '{{ item.name }}'
-          template: '{{ item.template }}'
-          type: '{{ item.type }}'
-      with_items: "{{ contracts }}"
+        contract: "{{ contract_name }}"
+        contract_filter_type: "{{ contract_filter_type }}"
+ 
 
-    - name: ENSURE APPLICATION EXISTS
+    - name: Create Application Profile
       cisco.mso.mso_schema_template_anp:
         <<: *mso_login
         state: "present"
@@ -83,7 +87,7 @@
         template: "{{ template }}"
         anp: "{{ anp }}"
 
-    - name: ENSURE APPLICATION EPGS EXISTS
+    - name: Create EPG
       cisco.mso.mso_schema_template_anp_epg:
         <<: *mso_login
         state: "present"
@@ -93,11 +97,11 @@
         anp: "{{ anp }}"
         epg: "{{ epg }}"
         bd:
-          name: "{{ bd }}"
-          schema: "{{ schema }}"
-          template: "{{ template }}"
+          name: '{{ bd }}'
+          schema: '{{ schema }}'
+          template: '{{ template }}'
 
-    - name: ENSURE EPG IS ASSOCIATED TO CONTRACTS
+    - name: Associate contract to EPG
       cisco.mso.mso_schema_template_anp_epg_contract:
         <<: *mso_login
         state: "present"
