@@ -40,7 +40,6 @@
       cisco.mso.mso_schema_template_bd:
         <<: *mso_login
         state: "present"
-        validate_certs: False
         schema: "{{ schema }}"
         template: "{{ template }}"
         bd: "{{ bd }}"
@@ -72,8 +71,8 @@
         schema: "{{ schema }}"
         template: "{{ template }}"
         filter: "{{ filter }}"
-        filter_schema: "{{ filter_schema }}"
-        filter_template: "{{ filter_template }}"
+        filter_schema: "{{ schema }}"
+        filter_template: "{{ template }}"
         filter_type: "{{ filter_type }}"
         contract: "{{ contract_name }}"
         contract_filter_type: "{{ contract_filter_type }}"
@@ -87,33 +86,58 @@
         template: "{{ template }}"
         anp: "{{ anp }}"
 
-    - name: Create EPG
+    - name: Create EPG 1
       cisco.mso.mso_schema_template_anp_epg:
         <<: *mso_login
         state: "present"
-        validate_certs: False
         schema: "{{ schema }}"
         template: "{{ template }}"
         anp: "{{ anp }}"
-        epg: "{{ epg }}"
+        epg: "{{ epg1 }}"
         bd:
           name: '{{ bd }}'
           schema: '{{ schema }}'
           template: '{{ template }}'
 
-    - name: Associate contract to EPG
-      cisco.mso.mso_schema_template_anp_epg_contract:
+    - name: Create EPG 2
+      cisco.mso.mso_schema_template_anp_epg:
         <<: *mso_login
         state: "present"
-        validate_certs: False
         schema: "{{ schema }}"
         template: "{{ template }}"
         anp: "{{ anp }}"
-        epg: "{{ epg }}"
+        epg: "{{ epg2 }}"
+        bd:
+          name: '{{ bd }}'
+          schema: '{{ schema }}'
+          template: '{{ template }}'
+
+    - name: Associate contract to EPG 1
+      cisco.mso.mso_schema_template_anp_epg_contract:
+        <<: *mso_login
+        state: "present"
+        schema: "{{ schema }}"
+        template: "{{ template }}"
+        anp: "{{ anp }}"
+        epg: "{{ epg1 }}"
         contract:
           name: '{{ item.name }}'
           template: '{{ item.template }}'
           type: '{{ item.type }}'
-      with_items: "{{ contracts }}"
+      with_items: "{{ contracts_epg_1 }}"
+
+    - name: Associate contract to EPG 2
+      cisco.mso.mso_schema_template_anp_epg_contract:
+        <<: *mso_login
+        state: "present"
+        schema: "{{ schema }}"
+        template: "{{ template }}"
+        anp: "{{ anp }}"
+        epg: "{{ epg2 }}"
+        contract:
+          name: '{{ item.name }}'
+          template: '{{ item.template }}'
+          type: '{{ item.type }}'
+      with_items: "{{ contracts_epg_2 }}"
 
     
