@@ -1,0 +1,96 @@
+{
+  "vpc-provider:account=904151566226:filter.vpc-id=vpc-3187185b:region=eu-central-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-3187185b",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-75adea1f",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "eu-central-1a",
+            "routeTableId": "rtb-c72031ad"
+          },
+          {
+            "subnetId": "subnet-76ee530a",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "eu-central-1b",
+            "routeTableId": "rtb-c72031ad"
+          },
+          {
+            "subnetId": "subnet-f932b3b5",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "eu-central-1c",
+            "routeTableId": "rtb-c72031ad"
+          }
+        ]
+      }
+    ]
+  },
+  "ami:account=904151566226:filters.image-type.0=machine:filters.name.0=amzn2-ami-hvm-2.0.20200520.1-x86_64-gp2:filters.state.0=available:region=eu-central-1": "ami-0eddbc6b8ff45b594",
+  "vpc-provider:account=904151566226:filter.vpc-id=vpc-042d1ab981cf6820f:region=eu-central-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-042d1ab981cf6820f",
+    "vpcCidrBlock": "10.0.0.0/16",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Private",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-0c205e2533d5b1b47",
+            "cidr": "10.0.1.0/24",
+            "availabilityZone": "eu-central-1a",
+            "routeTableId": "rtb-04051e8edf0170856"
+          },
+          {
+            "subnetId": "subnet-092169bf41719613c",
+            "cidr": "10.0.2.0/24",
+            "availabilityZone": "eu-central-1b",
+            "routeTableId": "rtb-04051e8edf0170856"
+          }
+        ]
+      }
+    ]
+  },
+  "availability-zones:account=904151566226:region=eu-central-1": [
+    "eu-central-1a",
+    "eu-central-1b",
+    "eu-central-1c"
+  ],
+  "ami:account=933669681845:filters.image-type.0=machine:filters.name.0=amzn2-ami-hvm-2.0.20200520.1-x86_64-gp2:filters.state.0=available:region=eu-central-1": "ami-0eddbc6b8ff45b594",
+  "vpc-provider:account=933669681845:filter.vpc-id=vpc-fbba4893:region=eu-central-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-fbba4893",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-f5289e9d",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "eu-central-1a",
+            "routeTableId": "rtb-7fd90417"
+          },
+          {
+            "subnetId": "subnet-c7b377bd",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "eu-central-1b",
+            "routeTableId": "rtb-7fd90417"
+          },
+          {
+            "subnetId": "subnet-5456691e",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "eu-central-1c",
+            "routeTableId": "rtb-7fd90417"
+          }
+        ]
+      }
+    ]
+  }
+}

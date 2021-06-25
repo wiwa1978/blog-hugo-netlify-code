@@ -1,0 +1,14 @@
+{
+  "availability-zones:account=904151566226:region=eu-central-1": [
+    "eu-central-1a",
+    "eu-central-1b",
+    "eu-central-1c"
+  ],
+  "ami:account=904151566226:filters.image-type.0=machine:filters.name.0=amzn2-ami-hvm-2.0.20200520.1-x86_64-gp2:filters.state.0=available:region=eu-central-1": "ami-0eddbc6b8ff45b594",
+  "availability-zones:account=933669681845:region=eu-central-1": [
+    "eu-central-1a",
+    "eu-central-1b",
+    "eu-central-1c"
+  ],
+  "ami:account=933669681845:filters.image-type.0=machine:filters.name.0=amzn2-ami-hvm-2.0.20200520.1-x86_64-gp2:filters.state.0=available:region=eu-central-1": "ami-0eddbc6b8ff45b594"
+}
