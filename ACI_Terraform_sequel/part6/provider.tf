@@ -8,7 +8,7 @@ terraform {
 
 provider "aci" {
   username = "apic:amslab\\\\wauterw"
-  password = "C!sco12345"
-  url      = "https://10.61.124.32"
+  password = "***"
+  url      = "***"
   insecure = true
 }
