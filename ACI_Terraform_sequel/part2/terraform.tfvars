@@ -1,0 +1,8 @@
+aci_tenant_1_name="tenant-1"
+aci_tenant_2_name="tenant-2"
+application_profile_1_name = "applicationprofile-1"
+application_profile_2_name = "applicationprofile-2"
+vrf_1_name = "vrf-1"
+vrf_2_name = "vrf-2"
+bd_1_name = "bd-1"
+bd_2_name = "bd-2"
