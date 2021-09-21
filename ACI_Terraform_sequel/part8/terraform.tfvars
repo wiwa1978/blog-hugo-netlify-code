@@ -33,18 +33,19 @@ vrfs = {
 }
 
 bds = {
-    "bd1"  =  {
-        bd_name = "bd_1_tenant_1"
-        vrf = "vrf1"
-        tenant = "tenant1"
+    "tenant1"  =  {
+        "bd1" = {
+             bd_name = "bd_1_tenant_1"
+             vrf = "vrf1"
+        }
+       
     }
-    "bd2"  =  {
-        bd_name = "bd_1_tenant_2"
-        vrf = "vrf3"
-        tenant = "tenant2"
+    "tenant2"  =  {
+        "bd2" = {
+             bd_name = "bd_2_tenant_2"
+             vrf = "vrf3"
+        }
     }
-
-
 }
 
 aps = {

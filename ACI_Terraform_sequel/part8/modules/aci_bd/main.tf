@@ -2,8 +2,8 @@ resource "aci_bridge_domain" "this" {
   for_each = var.bds
   
   tenant_dn          = var.tenant.id
-  name               = each.value.bd_name
+  name               = var.bds[each.key].bd_name
   
-  relation_fv_rs_ctx = each.value.vrf.id
+  //relation_fv_rs_ctx = var.bds[each.key].vrf
 }
 

@@ -13,10 +13,10 @@ module "tenantvrfap" {
 module "bd" {
   source        =   "./modules/aci_bd"
 
-  for_each      =   var.bds
+  for_each      =   var.tenants
 
-  tenant        =   module.tenantvrfap[each.value.tenant].tenant
-  //vrf           =   module.tenantvrfap[each.value.vrf].vrf
+  tenant        =   module.tenantvrfap[each.key].tenant
+  //vrf           =   module.tenantvrfap[each.key].vrf
   
   bds           =   var.bds[each.key]
 

@@ -18,9 +18,8 @@ variable "aps" {
 }
 
 variable "bds" {
-  type = map(object({
+  type = map(map(object({
     bd_name         = string
     vrf             = string
-    tenant          = string
-  }))
+  })))
 }
