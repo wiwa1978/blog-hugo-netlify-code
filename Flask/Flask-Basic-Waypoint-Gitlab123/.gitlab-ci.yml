@@ -1,0 +1,20 @@
+waypoint:
+  image: docker:latest
+  stage: build
+  services:
+    - docker:dind
+
+  variables:
+    WAYPOINT_VERSION: '0.2.0'
+    WAYPOINT_SERVER_ADDR: ''
+    WAYPOINT_SERVER_TOKEN: ''
+    WAYPOINT_SERVER_TLS: '1'
+    WAYPOINT_SERVER_TLS_SKIP_VERIFY: '1'
+  script:
+    - wget -q -O /tmp/waypoint.zip https://releases.hashicorp.com/waypoint/${WAYPOINT_VERSION}/waypoint_${WAYPOINT_VERSION}_linux_amd64.zip
+    - unzip -d /usr/local/bin /tmp/waypoint.zip
+    - rm -rf /tmp/waypoint*
+    - waypoint init
+    - waypoint build
+    - waypoint deploy
+    - waypoint release
