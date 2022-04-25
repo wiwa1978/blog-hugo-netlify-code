@@ -1,0 +1,17 @@
+---
+vpcs:
+  - id: VPC1
+    name: VPC1
+    cidr: 10.0.0.0/16
+  - id: VPC2
+    name: VPC2
+    cidr: 10.1.0.0/16
+subnets:
+  - id: SUBNET1
+    vpc_id: VPC1
+    name: Subnet1
+    availability_zone: eu-central-1a
+  - id: SUBNET2
+    vpc_id: VPC2
+    name: Subnet2
+    availability_zone: eu-central-1a

@@ -1,0 +1,40 @@
+#cloud-config
+autoinstall:
+  version: 1
+  apt:
+    geoip: true
+    preserve_sources_list: false
+    primary:
+    - arches: [amd64, i386]
+      uri: http://gb.archive.ubuntu.com/ubuntu
+    - arches: [default]
+      uri: http://ports.ubuntu.com/ubuntu-ports
+  early-commands:
+  # Stop ssh server during install so that Packer does not get confused
+    - sudo systemctl stop ssh
+  users:
+  - default
+  - name: ubuntu
+    lock_passwd: true
+    passwd: "$6$exDY1mhS4KUYCE/2$zmn9ToZwTKLhCw.b4/b.ZRTIZM30JZ4QrOQ2aOXJ8yk96xpcCof0kxKwuX1kqLG/ygbJ1f8wxED22bTL4F46P0"
+  identity:
+    hostname: ubuntu-server
+    username: ubuntu
+    password: "$6$exDY1mhS4KUYCE/2$zmn9ToZwTKLhCw.b4/b.ZRTIZM30JZ4QrOQ2aOXJ8yk96xpcCof0kxKwuX1kqLG/ygbJ1f8wxED22bTL4F46P0" 
+    # password = ubuntu
+  ssh:
+    allow-pw: true
+    install-server: true
+  user-data:
+    disable_root: false
+  locale: en_US
+  keyboard:
+    layout: en
+  packages:
+    - openssh-server
+    - open-vm-tools
+    - cloud-init
+    - iptables-persistent
+  late-commands:
+    - sed -i -e 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /target/etc/ssh/sshd_config
+    - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu

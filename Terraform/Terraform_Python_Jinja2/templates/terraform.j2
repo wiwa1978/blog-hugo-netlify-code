@@ -1,0 +1,29 @@
+# Create the VPC
+
+{%- for vpc in data.vpcs %}
+
+resource "aws_vpc" "{{ vpc.id }}" {               
+    cidr_block                          = {{ vpc.cidr }}     
+    instance_tenancy                    = "default"
+    enable_dns_hostnames                = true
+    assign_generated_ipv6_cidr_block    = true
+
+    tags = {
+        Name                =       {{ vpc.name }}
+    }
+}
+
+{%- endfor %}
+
+
+{%- for subnet in data.subnets %}
+
+resource "aws_subnet" "{{ subnet.id }}" {  
+    vpc_id                      =  {{ subnet.vpc_id }}
+    availability_zone           =  {{ subnet.availability_zone }}
+    tags = {
+        Name            =  {{ subnet.name }}
+    }      
+}
+
+{%- endfor %}
