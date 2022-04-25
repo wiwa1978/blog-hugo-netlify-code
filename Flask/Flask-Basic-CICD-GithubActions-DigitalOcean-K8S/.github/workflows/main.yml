@@ -1,0 +1,54 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "config/**"
+      - "site/**"
+      - "Dockerfile"
+      - ".github/workflows/**"
+
+env:
+  REGISTRY: "registry.digitalocean.com/wiwa1978-registry-wim-1"
+  IMAGE_NAME: "flask-app"
+
+jobs:
+  build:
+    name: Build, push, and deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v2
+
+      - name: Update SHA
+        run: echo $GITHUB_SHA > $GITHUB_WORKSPACE/app/_meta
+
+      - name: Build container image
+        run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7) .
+      # Install doctl
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Log in to DigitalOcean Container Registry with short-lived credentials
+        run: doctl registry login --expiry-seconds 600
+
+      - name: Push image to DigitalOcean Container Registry
+        run: docker push $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
+
+      - name: Update deployment file
+        run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|registry.digitalocean.com/wiwa1978-registry-wim-1/flask-app:'${TAG}'|' $GITHUB_WORKSPACE/config/deployment.yml
+
+      - name: Save DigitalOcean kubeconfig with short-lived credentials
+        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 flask-app-wim
+
+      - name: Deploy to DigitalOcean Kubernetes
+        run: kubectl apply -f $GITHUB_WORKSPACE/config/deployment.yml
+
+      - name: Verify deployment
+        run: kubectl rollout status deployment/$(echo $IMAGE_NAME)
