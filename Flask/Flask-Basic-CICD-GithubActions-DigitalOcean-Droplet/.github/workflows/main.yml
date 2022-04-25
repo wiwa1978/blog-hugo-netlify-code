@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+
+  workflow_dispatch:
+
+env:
+  REGISTRY: "registry.digitalocean.com/wiwa1978-registry-wim"
+  IMAGE_NAME: "flask-app-wim"
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout files
+        uses: actions/checkout@v2
+
+      - name: Build container image latest version
+        run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7) .
+
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Log in to DigitalOcean Container Registry with short-lived credentials
+        run: doctl registry login --expiry-seconds 600
+
+      - name: Push image to DigitalOcean Container Registry
+        run: docker push $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
+
+  deploy:
+    needs: build_and_push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to Digital Ocean droplet via SSH action
+        uses: appleboy/ssh-action@v0.1.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          envs: IMAGE_NAME,REGISTRY,GITHUB_SHA, ${{ secrets.DOCKER_USER }}, ${{ secrets.DOCKER_PASSWORD }}
+          port: 22
+          script: |
+            # login docker
+            docker login -u $DOCKER_USER -p $DOCKER_PASSWORD registry.digitalocean.com
+
+            docker stop $(echo $IMAGE_NAME)
+
+            docker rm $(echo $IMAGE_NAME)
+
+            # Run a new container from a new image
+            docker run -d \
+            --restart always \
+            -p 80:5000 \
+            --name $(echo $IMAGE_NAME) \
+            $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
