@@ -1,6 +1,6 @@
-name: aws_ec2_wim
+name: aws_ec2
 runtime:
   name: python
   options:
     virtualenv: venv
-description: A minimal AWS Python Pulumi program
+description: A simple AWS EC2 instance
