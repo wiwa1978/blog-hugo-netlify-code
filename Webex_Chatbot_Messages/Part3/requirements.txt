@@ -12,5 +12,5 @@ requests==2.22.0
 six==1.14.0
 urllib3==1.25.8
 virtualenv==20.0.0
-Werkzeug==1.0.0
+Werkzeug==2.2.3
 gunicorn==19.7.1
